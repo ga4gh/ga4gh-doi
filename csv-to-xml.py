@@ -58,12 +58,12 @@ def addStandard(df, att, j):
 <year>'''+ str(df[att[5]][j]) +'''</year>
 </approval_date>
 <publisher>
-<publisher_name>'''+ str(df[att[6]][j]) +'''</publisher_name>
-<publisher_place>'''+ str(df[att[7]][j]) +'''</publisher_place>
+<publisher_name>'''+ str(df[att[7]][j]) +'''</publisher_name>
+<publisher_place>'''+ str(df[att[8]][j]) +'''</publisher_place>
 </publisher>
 <standards_body>
-<standards_body_name>'''+ str(df[att[8]][j]) +'''</standards_body_name>
-<standards_body_acronym>'''+ str(df[att[9]][j]) +'''</standards_body_acronym>
+<standards_body_name>'''+ str(df[att[9]][j]) +'''</standards_body_name>
+<standards_body_acronym>'''+ str(df[att[10]][j]) +'''</standards_body_acronym>
 </standards_body>
 <doi_data>
 <doi>'''+ str(df[att[11]][j]) +'''</doi>
