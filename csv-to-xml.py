@@ -14,21 +14,27 @@ def CSVtoXML(inputfile,outputfile):
     except FileNotFoundError:
         print('CSV file not found')
         return 0
+
+    df.columns = df.iloc[0]
     att=df.columns    
 
-    entireop='''<?xml version="1.0" encoding="UTF-8"?>
-<doi_batch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/schema/4.3.6 http://www.crossref.org/schemas/crossref4.3.6.xsd" xmlns="http://www.crossref.org/schema/4.3.6" version="4.3.6">
-<head>
-<doi_batch_id>''' + str(df[att[16]][1]) + '''</doi_batch_id>
-<timestamp>''' + str(df[att[17]][1]) + '''</timestamp>
-<depositor>
-<depositor_name>''' + str(df[att[14]][1]) + '''</depositor_name>
-<email_address>''' + str(df[att[15]][1]) + '''</email_address>
-</depositor>
-<registrant>''' + str(df[att[13]][1]) + '''</registrant>
-</head>
-<body>
-'''
+    # Check if first header contains <>
+    if "<" not in str(df.columns[0]) and ">" not in str(df.columns[0]):
+        df = df[1:]
+
+    entireop='<?xml version="1.0" encoding="UTF-8"?>\n'\
+             '<doi_batch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/schema/4.3.6 http://www.crossref.org/schemas/crossref4.3.6.xsd" xmlns="http://www.crossref.org/schema/4.3.6" version="4.3.6">\n'\
+             '<head>\n'\
+             '<doi_batch_id>' + str(df["<doi_batch_id>"][1]) + '</doi_batch_id>\n'\
+             '<timestamp>' + str(df["<timestamp>"][1]) + '</timestamp>\n'\
+             '<depositor>'\
+             '<depositor_name>' + str(df["<depositor_name>"][1]) + '</depositor_name>\n'\
+             '<email_address>' + str(df["<email_address>"][1]) + '</email_address>\n'\
+             '</depositor>\n'\
+             '<registrant>' + str(df["<registrant>"][1]) + '</registrant>\n'\
+             '</head>\n'\
+             '<body>\n'\
+
     rowop=''
     for j in range(1,len(df)):
         rowop += addStandard(df, att, j)
@@ -39,38 +45,37 @@ def CSVtoXML(inputfile,outputfile):
 
 
 def addStandard(df, att, j):
-    return '''<standard>
- <standard_metadata language="en">
- <contributors>
-<organization sequence="first" contributor_role="author">''' + str(df[att[0]][j]) + '''</organization>
-</contributors>
-<titles>
-<title>'''+ str(df[att[1]][j]) +'''</title>
-</titles>
-<designators>
-<std_as_published undated="ASTM C1062">
-<std_designator>'''+ str(df[att[2]][j]) +'''</std_designator>
-</std_as_published>
-</designators>
-<approval_date>
-<month>'''+ str(df[att[3]][j]) +'''</month>
-<day>'''+ str(df[att[4]][j]) +'''</day>
-<year>'''+ str(df[att[5]][j]) +'''</year>
-</approval_date>
-<publisher>
-<publisher_name>'''+ str(df[att[7]][j]) +'''</publisher_name>
-<publisher_place>'''+ str(df[att[8]][j]) +'''</publisher_place>
-</publisher>
-<standards_body>
-<standards_body_name>'''+ str(df[att[9]][j]) +'''</standards_body_name>
-<standards_body_acronym>'''+ str(df[att[10]][j]) +'''</standards_body_acronym>
-</standards_body>
-<doi_data>
-<doi>'''+ str(df[att[11]][j]) +'''</doi>
-<resource>'''+ str(df[att[12]][j]) +'''</resource>
-</doi_data>
-</standard_metadata>
-</standard>
-'''
+    return '<standard>\n'\
+           '<standard_metadata language="en">\n'\
+           '<contributors>'\
+           '<organization sequence="first" contributor_role="author">' + str(df["<organization>"][j]) + '</organization>\n'\
+           '</contributors>\n'\
+           '<titles>'\
+           '<title>'+ str(df["<title>"][j]) +'</title>\n'\
+           '</titles>\n'\
+           '<designators>\n'\
+           '<std_as_published undated="ASTM C1062">\n'\
+           '<std_designator>'+ str(df["<std_designator>"][j]) +'</std_designator>\n'\
+           '</std_as_published>\n'\
+           '</designators>\n'\
+           '<approval_date>\n'\
+           '<month>'+ str(df["<month>"][j]) +'</month>\n'\
+           '<day>'+ str(df["<day>"][j]) +'</day>\n'\
+           '<year>'+ str(df["<year>"][j]) +'</year>\n'\
+           '</approval_date>\n'\
+           '<publisher>\n'\
+           '<publisher_name>'+ str(df["<publisher_name>"][j]) +'</publisher_name>\n'\
+           '<publisher_place>'+ str(df["<publisher_place>"][j]) +'</publisher_place>\n'\
+           '</publisher>\n'\
+           '<standards_body>\n'\
+           '<standards_body_name>'+ str(df["<standards_body_name>"][j]) +'</standards_body_name>\n'\
+           '<standards_body_acronym>'+ str(df["<standards_body_acronym>"][j]) +'</standards_body_acronym>\n'\
+           '</standards_body>\n'\
+           '<doi_data>\n'\
+           '<doi>'+ str(df["<doi>"][j]) +'</doi>\n'\
+           '<resource>'+ str(df["<resource>"][j]) +'</resource>\n'\
+           '</doi_data>\n'\
+           '</standard_metadata>\n'\
+           '</standard>\n'
 
-CSVtoXML("Copy of Product Approval Management - PRC tracker - DOI Tracking.csv","testoutput.xml")
+#CSVtoXML("Copy of Product Approval Management - PRC tracker - DOI Tracking.csv","testoutput.xml")
