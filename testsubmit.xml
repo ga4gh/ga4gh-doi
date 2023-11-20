@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doi_batch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/schema/4.3.6 http://www.crossref.org/schemas/crossref4.3.6.xsd" xmlns="http://www.crossref.org/schema/4.3.6" version="4.3.6">
+<head>
+<doi_batch_id>202311171008</doi_batch_id>
+<timestamp>202311171008</timestamp>
+<depositor>
+<depositor_name>Global Alliance for Genomics and Health</depositor_name>
+<email_address>info@ga4gh.org</email_address>
+</depositor>
+<registrant>Global Alliance for Genomics and Health</registrant>
+</head>
+<body>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Data Security Work Stream</organization>
+</contributors>
+<titles>
+<title>AAI</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>23</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/01</doi>
+<resource>https://www.ga4gh.org/product/aai/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Discovery Work Stream</organization>
+</contributors>
+<titles>
+<title>Beacon API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>4</month>
+<day>21</day>
+<year>2022</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/02</doi>
+<resource>https://www.ga4gh.org/product/beacon-api/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>BED Specification</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>27</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/03</doi>
+<resource>https://www.ga4gh.org/product/bed-specification/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Clinical Genomics Consent Clauses</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>6</month>
+<day>22</day>
+<year>2022</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/04</doi>
+<resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Consent Clauses for Genomic Research</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>7</month>
+<day>8</day>
+<year>2020</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/05</doi>
+<resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Consent Clauses for Large Scale Initiatives</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>4</month>
+<day>21</day>
+<year>2022</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/06</doi>
+<resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Consent Policy</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>9</month>
+<day>3</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/40</doi>
+<resource>https://www.ga4gh.org/product/consent-policy/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Copyright Policy</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>4</month>
+<day>20</day>
+<year>2020</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/41</doi>
+<resource>https://www.ga4gh.org/copyright-policy/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>CRAM File Format</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>22</day>
+<year>2018</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/07</doi>
+<resource>https://www.ga4gh.org/product/cram/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>Crypt4GH</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>9</month>
+<day>3</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/08</doi>
+<resource>https://www.ga4gh.org/product/genetic-data-encryption-crypt4gh/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Data Access Committee Review Standards (DACReS) Policy</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>27</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/09</doi>
+<resource>https://www.ga4gh.org/product/data-access-committee-review-standards-toolkit-guiding-principles-and-procedural-standards-policy/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Discovery Work Stream</organization>
+</contributors>
+<titles>
+<title>Data Connect API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>4</month>
+<day>13</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/10</doi>
+<resource>https://www.ga4gh.org/product/data-connect/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Data Security Work Stream</organization>
+</contributors>
+<titles>
+<title>Data Privacy and Security Policy</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>9</month>
+<day>3</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/11</doi>
+<resource>https://www.ga4gh.org/product/data-privacy-and-security-policy/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Data Security Work Stream</organization>
+</contributors>
+<titles>
+<title>Data Security Infrastructure Policy</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>9</month>
+<day>3</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/12</doi>
+<resource>https://www.ga4gh.org/product/data-security-infrastructure-policy/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Data Use and Researcher Identities (DURI) Work Stream</organization>
+</contributors>
+<titles>
+<title>Data Use Ontology</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>28</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/13</doi>
+<resource>https://www.ga4gh.org/product/data-use-ontology-duo/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Cloud Work Stream</organization>
+</contributors>
+<titles>
+<title>DRS</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>23</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/14</doi>
+<resource>https://www.ga4gh.org/product/data-repository-service-drs/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Ethics Review Recognition Policy</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>7</month>
+<day>8</day>
+<year>2020</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/15</doi>
+<resource>https://www.ga4gh.org/product/ethics-review-recognition-policy/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Familial Consent Clauses</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>3</month>
+<day>20</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/16</doi>
+<resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Framework for Involving &amp; Engaging PPP in Genomics Research &amp; Health Implementation</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>6</month>
+<day>24</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/17</doi>
+<resource>https://www.ga4gh.org/product/framework-for-involving-and-engaging-participants-patients-and-publics-in-genomics-research-and-health-implementation/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Framework for Responsible Sharing of Genomic and Health-Related Data</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>9</month>
+<day>3</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/18</doi>
+<resource>https://www.ga4gh.org/product/framework-for-responsible-sharing-of-genomic-and-health-related-data/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>GA4GH BED API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>27</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/19</doi>
+<resource>https://www.ga4gh.org/product/bed-specification/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Genetic Discrimination: Implications for Data Sharing Projects (GeDI)</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>31</day>
+<year>2022</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/20</doi>
+<resource>https://www.ga4gh.org/product/genetic-discrimination-toolkit-implications-for-data-sharing-projects/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>htsget API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>22</day>
+<year>2018</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/21</doi>
+<resource>https://www.ga4gh.org/product/htsget/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Machine Readable Consent Guidance</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>7</month>
+<day>8</day>
+<year>2020</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/22</doi>
+<resource>https://www.ga4gh.org/product/machine-readable-consent-guidance/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Model consent clauses for rare disease research</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>1</day>
+<year>2020</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/23</doi>
+<resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Data Use and Researcher Identities (DURI) Work Stream</organization>
+</contributors>
+<titles>
+<title>Passports</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>23</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/24</doi>
+<resource>https://www.ga4gh.org/product/ga4gh-passports/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Pediatric Consent Clauses</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>27</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/25</doi>
+<resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Clinical and Phenotypic Data Capture and Exchange (Clin/Pheno)  Work Stream</organization>
+</contributors>
+<titles>
+<title>Phenopackets v1</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>9</month>
+<day>3</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/26</doi>
+<resource>https://www.ga4gh.org/product/phenopackets/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Clinical and Phenotypic Data Capture and Exchange (Clin/Pheno)  Work Stream</organization>
+</contributors>
+<titles>
+<title>Phenopackets v2</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>6</month>
+<day>24</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/27</doi>
+<resource>https://www.ga4gh.org/product/phenopackets/ </resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
+</contributors>
+<titles>
+<title>Policy on Clinically Actionable Genomic Research Results</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>6</month>
+<day>24</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/28</doi>
+<resource>https://www.ga4gh.org/product/policy-on-clinically-actionable-genomic-research-results/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>refget API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>3</day>
+<year>2018</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/29</doi>
+<resource>https://www.ga4gh.org/product/refget/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>refget API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>7</month>
+<day>17</day>
+<year>2023</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/30</doi>
+<resource>https://www.ga4gh.org/product/refget/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>rnaget API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>22</day>
+<year>2020</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/31</doi>
+<resource>https://www.ga4gh.org/product/rnaget/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>SAM/BAM File Formats</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>22</day>
+<year>2018</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/32</doi>
+<resource>https://www.ga4gh.org/product/sam-bam/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Discovery Work Stream</organization>
+</contributors>
+<titles>
+<title>Service Info</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>22</day>
+<year>2020</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/33</doi>
+<resource>https://www.ga4gh.org/product/service-info/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Discovery Work Stream</organization>
+</contributors>
+<titles>
+<title>Service Registry</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>22</day>
+<year>2020</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/34</doi>
+<resource>https://www.ga4gh.org/product/service-registry/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Cloud Work Stream</organization>
+</contributors>
+<titles>
+<title>Task Execution Service</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>20</day>
+<year>2021</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/35</doi>
+<resource>https://www.ga4gh.org/product/task-execution-service-tes/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Cloud Work Stream</organization>
+</contributors>
+<titles>
+<title>Tool Registry Service (TRS) API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>9</month>
+<day>3</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/36</doi>
+<resource>https://www.ga4gh.org/product/tool-registry-service-trs/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Genomic Knowledge Standards (GKS) Work Stream</organization>
+</contributors>
+<titles>
+<title>Variant Representation</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>9</month>
+<day>3</day>
+<year>2019</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/37</doi>
+<resource>https://www.ga4gh.org/product/variation-representation/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
+</contributors>
+<titles>
+<title>VCF / BCF File Formats</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>1</month>
+<day>22</day>
+<year>2018</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/38</doi>
+<resource>https://www.ga4gh.org/product/genetic-variation-formats-vcf/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Cloud Work Stream</organization>
+</contributors>
+<titles>
+<title>Workflow Execution Service (WES) API</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>3</day>
+<year>2018</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/39</doi>
+<resource>https://www.ga4gh.org/product/workflow-execution-service-wes/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+</body>
+</doi_batch>
