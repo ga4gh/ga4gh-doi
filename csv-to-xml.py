@@ -1,4 +1,6 @@
 import pandas as pd
+from suffixGenerator import generateSuffix
+from designatorGenerator import generateDesignator
 
 
 def CSVtoXML(inputfile,outputfile):
@@ -27,7 +29,7 @@ def CSVtoXML(inputfile,outputfile):
              '<head>\n'\
              '<doi_batch_id>' + str(df["<doi_batch_id>"][1]) + '</doi_batch_id>\n'\
              '<timestamp>' + str(df["<timestamp>"][1]) + '</timestamp>\n'\
-             '<depositor>'\
+             '<depositor>\n'\
              '<depositor_name>' + str(df["<depositor_name>"][1]) + '</depositor_name>\n'\
              '<email_address>' + str(df["<email_address>"][1]) + '</email_address>\n'\
              '</depositor>\n'\
@@ -36,7 +38,9 @@ def CSVtoXML(inputfile,outputfile):
              '<body>\n'\
 
     rowop=''
-    for j in range(1,len(df)):
+
+    for j in range(1,len(df)):  #add suffix if no suffix also check if suffix exists
+        
         rowop += addStandard(df, att, j)
 
     entireop=entireop+rowop+"</body>\n</doi_batch>"
@@ -45,17 +49,24 @@ def CSVtoXML(inputfile,outputfile):
 
 
 def addStandard(df, att, j):
+    suffix = str(generateSuffix())
+    #print(type(df['<doi>'][j]), df['<std_designator>'][j])
+    if df['<doi>'][j] == "10.59756xx": #TODO: better checks for if doi already has suffix       
+        if suffix in df['<doi>']:
+            while suffix in df['<doi>']:
+                suffix = str(generateSuffix())
+
     return '<standard>\n'\
            '<standard_metadata language="en">\n'\
-           '<contributors>'\
+           '<contributors>\n'\
            '<organization sequence="first" contributor_role="author">' + str(df["<organization>"][j]) + '</organization>\n'\
            '</contributors>\n'\
-           '<titles>'\
-           '<title>'+ str(df["<title>"][j]) +'</title>\n'\
+           '<titles>\n'\
+           '<title>'+ str(df["<title>"][j]).replace("&", "&amp;") +'</title>\n'\
            '</titles>\n'\
            '<designators>\n'\
-           '<std_as_published undated="ASTM C1062">\n'\
-           '<std_designator>'+ str(df["<std_designator>"][j]) +'</std_designator>\n'\
+           '<std_as_published undated="'+ str(df["<std_designator>"][j]) +'">\n'\
+           '<std_designator>'+ (generateDesignator(df['<standards_body_acronym>'][j], suffix) if df['<doi>'][j]=="10.59756xx" else df['<std_designator>'][j]) +'</std_designator>\n'\
            '</std_as_published>\n'\
            '</designators>\n'\
            '<approval_date>\n'\
@@ -72,10 +83,14 @@ def addStandard(df, att, j):
            '<standards_body_acronym>'+ str(df["<standards_body_acronym>"][j]) +'</standards_body_acronym>\n'\
            '</standards_body>\n'\
            '<doi_data>\n'\
-           '<doi>'+ str(df["<doi>"][j]) +'</doi>\n'\
+           '<doi>' + ("10.59756/"+ suffix if df['<doi>'][j]=="10.59756xx" else df['<doi>'][j]) + '</doi>\n'\
            '<resource>'+ str(df["<resource>"][j]) +'</resource>\n'\
            '</doi_data>\n'\
            '</standard_metadata>\n'\
            '</standard>\n'
 
-#CSVtoXML("Copy of Product Approval Management - PRC tracker - DOI Tracking.csv","testoutput.xml")
+
+
+CSVtoXML("Product Approval Management - PRC tracker - DOI Tracking.csv","suffix-designator-test-output.xml")
+
+
