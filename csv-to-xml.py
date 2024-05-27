@@ -44,6 +44,8 @@ def CSVtoXML(inputfile,outputfile):
         rowop += addStandard(df, att, j)
 
     entireop=entireop+rowop+"</body>\n</doi_batch>"
+
+    df.to_csv("test-csv-output.csv", index=False)
     with open(outputfile,'w') as f:
         f.write(entireop)
 
@@ -55,6 +57,11 @@ def addStandard(df, att, j):
         if suffix in df['<doi>']:
             while suffix in df['<doi>']:
                 suffix = str(generateSuffix())
+            #df['<doi>'][j]=suffix
+            df.loc[j, '<doi>'] = suffix
+        else:
+            #df['<doi>'][j]=suffix
+            df.loc[j, '<doi>'] = suffix
 
     return '<standard>\n'\
            '<standard_metadata language="en">\n'\
@@ -66,7 +73,7 @@ def addStandard(df, att, j):
            '</titles>\n'\
            '<designators>\n'\
            '<std_as_published undated="'+ str(df["<std_designator>"][j]) +'">\n'\
-           '<std_designator>'+ (generateDesignator(df['<standards_body_acronym>'][j], suffix) if df['<doi>'][j]=="10.59756xx" else df['<std_designator>'][j]) +'</std_designator>\n'\
+           '<std_designator>'+ str(generateDesignator(df['<standards_body_acronym>'][j], suffix)) if df['<doi>'][j]=="10.59756xx" else '<std_designator>'+ str(df['<std_designator>'][j]) +'</std_designator>\n'\
            '</std_as_published>\n'\
            '</designators>\n'\
            '<approval_date>\n'\
@@ -88,9 +95,11 @@ def addStandard(df, att, j):
            '</doi_data>\n'\
            '</standard_metadata>\n'\
            '</standard>\n'
+           
 
 
 
-CSVtoXML("Product Approval Management - PRC tracker - DOI Tracking.csv","suffix-designator-test-output.xml")
+#CSVtoXML("Product Approval Management - PRC tracker - DOI Tracking.csv","suffix-designator-test-output.xml")
+CSVtoXML("test-csv-output.csv","suffix-designator-test-output.xml")
 
 

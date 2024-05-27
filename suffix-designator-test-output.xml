@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <doi_batch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/schema/4.3.6 http://www.crossref.org/schemas/crossref4.3.6.xsd" xmlns="http://www.crossref.org/schema/4.3.6" version="4.3.6">
 <head>
-<doi_batch_id>202311171608</doi_batch_id>
-<timestamp>202311171608</timestamp>
+<doi_batch_id>nan</doi_batch_id>
+<timestamp>nan</timestamp>
 <depositor>
 <depositor_name>Global Alliance for Genomics and Health</depositor_name>
-<email_address>chen.chen@ga4gh.org</email_address>
+<email_address>info@ga4gh.org</email_address>
 </depositor>
 <registrant>Global Alliance for Genomics and Health</registrant>
 </head>
 <body>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Data Security Work Stream</organization>
-</contributors>
-<titles>
-<title>AAI</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -37,21 +27,33 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/AAI</doi>
+<doi>d-m-350z7u</doi>
 <resource>https://www.ga4gh.org/product/aai/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Discovery Work Stream</organization>
-</contributors>
-<titles>
-<title>Beacon API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>rt1x59-a</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -69,21 +71,55 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Beacon_API</doi>
+<doi>e48--xh82j</doi>
 <resource>https://www.ga4gh.org/product/beacon-api/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>BED Specification</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>f52-3hgh</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>zp--w5244f</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -101,21 +137,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/BED_Specification</doi>
+<doi>z--0v2s06y</doi>
 <resource>https://www.ga4gh.org/product/bed-specification/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Clinical Genomics Consent Clauses</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -133,21 +159,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Clinical_Genomics_Consent_Clauses</doi>
+<doi>js81-8ea</doi>
 <resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Consent Clauses for Genomic Research</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -165,21 +181,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Consent_Clauses_for_Genomic_Research</doi>
+<doi>y5c2k-0u</doi>
 <resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Consent Clauses for Large Scale Initiatives</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -197,21 +203,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Consent_Clauses_for_Large_Scale_Initiatives</doi>
+<doi>n70-b1ab</doi>
 <resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Consent Policy</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -229,21 +225,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Consent_Policy</doi>
+<doi>jq1x31-p</doi>
 <resource>https://www.ga4gh.org/product/consent-policy/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Copyright Policy</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -261,21 +247,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Copyright_Policy</doi>
+<doi>r4-3ed1a</doi>
 <resource>https://www.ga4gh.org/copyright-policy/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>CRAM File Format</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -293,21 +269,77 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/CRAM_File_Format</doi>
+<doi>d49fw-84-h</doi>
 <resource>https://www.ga4gh.org/product/cram/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>Crypt4GH</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>t79v1-ds</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>ud5s35-n</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>x2wd03-k</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -325,21 +357,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Crypt4GH</doi>
+<doi>fm-359wg</doi>
 <resource>https://www.ga4gh.org/product/genetic-data-encryption-crypt4gh/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Data Access Committee Review Standards (DACReS) Policy</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -357,21 +379,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Data_Access_Committee_Review_Standards_(DACReS)_Policy</doi>
+<doi>g868-urg</doi>
 <resource>https://www.ga4gh.org/product/data-access-committee-review-standards-toolkit-guiding-principles-and-procedural-standards-policy/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Discovery Work Stream</organization>
-</contributors>
-<titles>
-<title>Data Connect API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -389,21 +401,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Data_Connect_API</doi>
+<doi>py-980zh</doi>
 <resource>https://www.ga4gh.org/product/data-connect/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Data Security Work Stream</organization>
-</contributors>
-<titles>
-<title>Data Privacy and Security Policy</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -421,21 +423,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Data_Privacy_and_Security_Policy</doi>
+<doi>h9-t4u8x</doi>
 <resource>https://www.ga4gh.org/product/data-privacy-and-security-policy/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Data Security Work Stream</organization>
-</contributors>
-<titles>
-<title>Data Security Infrastructure Policy</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -453,21 +445,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Data_Security_Infrastructure_Policy</doi>
+<doi>qz-b084d</doi>
 <resource>https://www.ga4gh.org/product/data-security-infrastructure-policy/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Data Use and Researcher Identities (DURI) Work Stream</organization>
-</contributors>
-<titles>
-<title>Data Use Ontology</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -485,21 +467,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Data_Use_Ontology</doi>
+<doi>d5c-g83v</doi>
 <resource>https://www.ga4gh.org/product/data-use-ontology-duo/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Cloud Work Stream</organization>
-</contributors>
-<titles>
-<title>DRS</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -517,21 +489,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/DRS</doi>
+<doi>p-7q8w3-0p</doi>
 <resource>https://www.ga4gh.org/product/data-repository-service-drs/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Ethics Review Recognition Policy</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -549,21 +511,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Ethics_Review_Recognition_Policy</doi>
+<doi>zr-83y0z</doi>
 <resource>https://www.ga4gh.org/product/ethics-review-recognition-policy/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Familial Consent Clauses</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -581,21 +533,33 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Familial_Consent_Clauses</doi>
+<doi>gf2h4-9s</doi>
 <resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Framework for Involving &amp; Engaging PPP in Genomics Research &amp; Health Implementation</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>gp-75w85-n</doi>
+<resource>https://www.ga4gh.org/product/family-history-toolkit/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -613,21 +577,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Framework_for_Involving_and_Engaging_PPP_in_Genomics_Research_and_Health_Implementation</doi>
+<doi>f1-u3x8k</doi>
 <resource>https://www.ga4gh.org/product/framework-for-involving-and-engaging-participants-patients-and-publics-in-genomics-research-and-health-implementation/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Framework for Responsible Sharing of Genomic and Health-Related Data</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -645,21 +599,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Framework_for_Responsible_Sharing_of_Genomic_and_Health-Related_Data</doi>
+<doi>x510je-t</doi>
 <resource>https://www.ga4gh.org/product/framework-for-responsible-sharing-of-genomic-and-health-related-data/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>GA4GH BED API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -677,21 +621,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/GA4GH_BED_API</doi>
+<doi>z-179-2vkj</doi>
 <resource>https://www.ga4gh.org/product/bed-specification/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Genetic Discrimination: Implications for Data Sharing Projects (GeDI)</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -709,21 +643,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Genetic_Discrimination:_Implications_for_Data_Sharing_Projects_(GeDI)</doi>
+<doi>hvx4-26a</doi>
 <resource>https://www.ga4gh.org/product/genetic-discrimination-toolkit-implications-for-data-sharing-projects/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>htsget API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -741,21 +665,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/htsget_API</doi>
+<doi>n-63cs5u</doi>
 <resource>https://www.ga4gh.org/product/htsget/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Machine Readable Consent Guidance</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -773,21 +687,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Machine_Readable_Consent_Guidance</doi>
+<doi>z-t213pt</doi>
 <resource>https://www.ga4gh.org/product/machine-readable-consent-guidance/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Model consent clauses for rare disease research</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -805,21 +709,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Model_consent_clauses_for_rare_disease_research</doi>
+<doi>v-1-s0y08x</doi>
 <resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Data Use and Researcher Identities (DURI) Work Stream</organization>
-</contributors>
-<titles>
-<title>Passports</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -837,21 +731,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Passports</doi>
+<doi>xv9c1-6y</doi>
 <resource>https://www.ga4gh.org/product/ga4gh-passports/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Pediatric Consent Clauses</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -869,21 +753,33 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Pediatric_Consent_Clauses</doi>
+<doi>wv1-1k6w</doi>
 <resource>https://www.ga4gh.org/product/consent-toolkit/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Clinical and Phenotypic Data Capture and Exchange (Clin/Pheno)  Work Stream</organization>
-</contributors>
-<titles>
-<title>Phenopackets v1</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>acq5-346-w</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -901,21 +797,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Phenopackets_v1</doi>
+<doi>d62k-x8c</doi>
 <resource>https://www.ga4gh.org/product/phenopackets/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Clinical and Phenotypic Data Capture and Exchange (Clin/Pheno)  Work Stream</organization>
-</contributors>
-<titles>
-<title>Phenopackets v2</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -933,21 +819,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Phenopackets_v2</doi>
+<doi>h-3751c-rw</doi>
 <resource>https://www.ga4gh.org/product/phenopackets/ </resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Regulatory and Ethics Work Stream  (REWS) </organization>
-</contributors>
-<titles>
-<title>Policy on Clinically Actionable Genomic Research Results</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -965,21 +841,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Policy_on_Clinically_Actionable_Genomic_Research_Results</doi>
+<doi>s230y-tq</doi>
 <resource>https://www.ga4gh.org/product/policy-on-clinically-actionable-genomic-research-results/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>refget API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -997,21 +863,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/refget_API</doi>
+<doi>tv-2379-qv</doi>
 <resource>https://www.ga4gh.org/product/refget/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>refget API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1029,21 +885,77 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/refget_API</doi>
+<doi>m826-y3u-w</doi>
 <resource>https://www.ga4gh.org/product/refget/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>rnaget API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>j65-5veh</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>jeu45-3t</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>s9n-48td</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1061,21 +973,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/rnaget_API</doi>
+<doi>k207us-d</doi>
 <resource>https://www.ga4gh.org/product/rnaget/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>SAM/BAM File Formats</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1093,21 +995,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/SAM/BAM_File_Formats</doi>
+<doi>qs759a-x</doi>
 <resource>https://www.ga4gh.org/product/sam-bam/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Discovery Work Stream</organization>
-</contributors>
-<titles>
-<title>Service Info</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1125,21 +1017,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Service_Info</doi>
+<doi>a6k-u49h</doi>
 <resource>https://www.ga4gh.org/product/service-info/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Discovery Work Stream</organization>
-</contributors>
-<titles>
-<title>Service Registry</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1157,21 +1039,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Service_Registry</doi>
+<doi>f1mu4-9u</doi>
 <resource>https://www.ga4gh.org/product/service-registry/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Cloud Work Stream</organization>
-</contributors>
-<titles>
-<title>Task Execution Service</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1189,21 +1061,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Task_Execution_Service</doi>
+<doi>e7-ex84t</doi>
 <resource>https://www.ga4gh.org/product/task-execution-service-tes/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Cloud Work Stream</organization>
-</contributors>
-<titles>
-<title>Tool Registry Service (TRS) API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1221,21 +1083,77 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Tool_Registry_Service_(TRS)_API</doi>
+<doi>zyw21-6e</doi>
 <resource>https://www.ga4gh.org/product/tool-registry-service-trs/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Genomic Knowledge Standards (GKS) Work Stream</organization>
-</contributors>
-<titles>
-<title>Variant Representation</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>gv349e-v</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>aa9-56qg</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>d112--j4de</doi>
+<resource>https://www.ga4gh.org/product/variant-benchmarking-tools/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1253,21 +1171,11 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Variant_Representation</doi>
+<doi>zd6e4-6y</doi>
 <resource>https://www.ga4gh.org/product/variation-representation/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Large Scale Genomics (LSG) Work Stream</organization>
-</contributors>
-<titles>
-<title>VCF / BCF File Formats</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1285,21 +1193,99 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/VCF_/_BCF_File_Formats</doi>
+<doi>f-md-6104q</doi>
 <resource>https://www.ga4gh.org/product/genetic-variation-formats-vcf/</resource>
 </doi_data>
 </standard_metadata>
 </standard>
-<standard>
-<standard_metadata language="en">
-<contributors>
-<organization sequence="first" contributor_role="author">GA4GH Cloud Work Stream</organization>
-</contributors>
-<titles>
-<title>Workflow Execution Service (WES) API</title>
-</titles>
-<designators>
-<std_as_published undated="nan">
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>nh19-4xn</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>t3rt60-t</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>c-16ud36-e</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+<std_designator>nan</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>nan</month>
+<day>nan</day>
+<year>nan</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Alliance for Genomics and Health</publisher_name>
+<publisher_place>Toronto, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Alliance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA4GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>h77rb-4b</doi>
+<resource>nan</resource>
+</doi_data>
+</standard_metadata>
+</standard>
 <std_designator>nan</std_designator>
 </std_as_published>
 </designators>
@@ -1317,7 +1303,7 @@
 <standards_body_acronym>GA4GH</standards_body_acronym>
 </standards_body>
 <doi_data>
-<doi>10.59756/Workflow_Execution_Service_(WES)_API</doi>
+<doi>k3rk3-1r</doi>
 <resource>https://www.ga4gh.org/product/workflow-execution-service-wes/</resource>
 </doi_data>
 </standard_metadata>
