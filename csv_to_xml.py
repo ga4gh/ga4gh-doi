@@ -99,7 +99,5 @@ def addStandard(df, att, j):
 
 
 
-#CSVtoXML("Product Approval Management - PRC tracker - DOI Tracking.csv","suffix-designator-test-output.xml")
-CSVtoXML("test-csv-output.csv","suffix-designator-test-output.xml")
 
 
