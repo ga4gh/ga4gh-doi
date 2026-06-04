@@ -1,6 +1,6 @@
 import pandas as pd
-from suffixGenerator import generateSuffix
-from designatorGenerator import generateDesignator
+from services.suffixGenerator import generateSuffix
+from services.designatorGenerator import generateDesignator
 from datetime import datetime
 
 def CSVtoXML(inputfile,outputfile):
@@ -103,6 +103,6 @@ def addStandard(df, att, j):
            
 # '<std_designator>'+ str(generateDesignator(df['<standards_body_acronym>'][j], suffix)) if (df['<doi>'][j]=="10.59756xx" or not df['<std_designator>'][j]) else '<std_designator>'+ str(df['<std_designator>'][j]) +'</std_designator>\n'\
 
-CSVtoXML("test-csv-output.csv","test-xml-output.xml")
+#CSVtoXML("test-csv-output.csv","xml/test-xml-output.xml")
 
 

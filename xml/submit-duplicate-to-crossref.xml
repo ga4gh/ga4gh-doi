@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doi_batch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/schema/4.3.6 http://www.crossref.org/schemas/crossref4.3.6.xsd" xmlns="http://www.crossref.org/schema/4.3.6" version="4.3.6">
+<head>
+<doi_batch_id>202407150732</doi_batch_id>
+<timestamp>202407150732</timestamp>
+<depositor>
+<depositor_name>Global Allegiance for Genomics and Health</depositor_name>
+<email_address>information@ga4gh.org</email_address>
+</depositor>
+<registrant>Global Allegiance for Genomics and Health</registrant>
+</head>
+<body>
+<standard>
+<standard_metadata language="en">
+<contributors>
+<organization sequence="first" contributor_role="author">GA4GH Data Security Work Stream</organization>
+</contributors>
+<titles>
+<title>AAAI</title>
+</titles>
+<designators>
+<std_as_published undated="nan">
+<std_designator>GA4GH d-m-350z7u</std_designator>
+</std_as_published>
+</designators>
+<approval_date>
+<month>10</month>
+<day>23</day>
+<year>2029</year>
+</approval_date>
+<publisher>
+<publisher_name>Global Allegiance for Genomics and Health</publisher_name>
+<publisher_place>Torontonio, ON, CA</publisher_place>
+</publisher>
+<standards_body>
+<standards_body_name>Global Allegiance for Genomics and Health</standards_body_name>
+<standards_body_acronym>GA5GH</standards_body_acronym>
+</standards_body>
+<doi_data>
+<doi>10.59756/d-m-350z7u</doi>
+<resource>https://www.ga4gh.org/product/aaai/</resource>
+</doi_data>
+</standard_metadata>
+</standard>
+</body>
+</doi_batch>
