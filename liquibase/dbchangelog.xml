@@ -1,6 +1,23 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     <changeSet author="cchen (generated)" id="1780584785863-1">
+        <createTable tableName="batch">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi_batch_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deposited_by" type="VARCHAR(255)"/>
+            <column name="depositor_email" type="DATE"/>
+            <column name="doi_type" type="INT"/>
+            <column name="approved" type="BOOLEAN"/>
+            <column name="successful" type="BOOLEAN"/>
+            <column name="created_by" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_by" type="TEXT"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </createTable>
         <createTable tableName="dois">
             <column autoIncrement="true" name="id" type="INT">
                 <constraints primaryKey="true" nullable="false"/>
@@ -8,8 +25,49 @@
             <column name="doi" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="title" type="VARCHAR(255)"/>
+            <column name="doi_batch_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approver" type="TEXT"/>
+            <column name="approver_email" type="TEXT"/>
+            <column name="person_responsible" type="TEXT"/>
+            <column name="person_responsible_email" type="TEXT"/>
+            <column name="doi_type" type="INT"/>
+            <column name="status" type="TEXT"/>
+            <column name="successful" type="BOOLEAN"/>
+            <column name="created_by" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_by" type="TEXT"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </createTable>
+        <createTable tableName="standards">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="resource_url" type="VARCHAR(255)"/>
+            <column name="published_date" type="DATE"/>
+            <column name="item_number" type="INT"/>
+            <column name="publisher_place" type="TEXT"/>
+            <column name="std_designator" type="TEXT"/>
+            <column name="standards_body_acronym" type="TEXT"/>
+            <column name="depositor_name" type="TEXT"/>
+            <column name="registrant" type="TEXT"/>
+            <column name="publisher_name" type="TEXT"/>
+            <column name="standards_body_name" type="TEXT"/>
+            <column name="organization" type="TEXT"/>
+            <column name="title" type="TEXT"/>
+            <column name="resource_link" type="TEXT"/>
+            <column name="email_address" type="TEXT"/>
+            <column name="batch_id" type="UUID"/>
+            <column name="submitted_at" type="TIMESTAMP"/>
+            <column name="created_by" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_by" type="TEXT"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="version" type="INT"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
