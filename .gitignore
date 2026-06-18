@@ -154,6 +154,7 @@ cython_debug/
 
 #crossref auth details
 password.py
+csv/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can

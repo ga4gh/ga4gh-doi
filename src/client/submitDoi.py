@@ -1,7 +1,7 @@
 import requests
 from config.password import EMAIL, PASSWORD
 
-def submit_doi(xml):
+def submitDoi(xml):
     url = "https://test.crossref.org/servlet/deposit"
     email = EMAIL
     password = PASSWORD
@@ -21,4 +21,4 @@ def submit_doi(xml):
 
     return postRequest.status_code, postRequest.text
 
-print(submit_doi("testsubmit.xml"))
+#print(submit_doi("testsubmit.xml"))
