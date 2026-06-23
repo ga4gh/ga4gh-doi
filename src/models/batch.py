@@ -13,6 +13,9 @@ doi_type_enum = PgEnum(
 
 
 class Base(DeclarativeBase):
+    # Shared SQLAlchemy registry — all ORM models inherit from this single instance
+    # so they belong to the same metadata context. Defined once here and imported
+    # by doi.py to keep every table in the same registry without circular imports.
     pass
 
 
