@@ -1,1 +1,8 @@
 yoyo-migrations==7.3.2
+click==8.4.1
+pandas==3.0.3
+pydantic==2.13.4
+pydantic-settings==2.14.1
+requests==2.34.2
+sqlalchemy==2.0.51
+psycopg==3.3.4

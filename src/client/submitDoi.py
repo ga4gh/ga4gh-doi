@@ -1,8 +1,7 @@
-from logging import exception
 import requests
-from password import EMAIL, PASSWORD
+from config.password import EMAIL, PASSWORD
 
-def submit_doi(xml):
+def submitDoi(xml):
     url = "https://test.crossref.org/servlet/deposit"
     email = EMAIL
     password = PASSWORD
@@ -17,9 +16,9 @@ def submit_doi(xml):
         
         postRequest = requests.post(url, params=params, headers=header, files=file, timeout=100000000)
 
-    except:
-        raise exception("Submit request failed") 
+    except Exception as e:
+        raise Exception("Submit request failed") 
 
     return postRequest.status_code, postRequest.text
 
-print(submit_doi("testsubmit.xml"))
+#print(submit_doi("testsubmit.xml"))

@@ -1,0 +1,205 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="cchen (generated)" id="1780584785863-1">
+        <createTable tableName="batch">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi_batch_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deposited_by" type="VARCHAR(255)"/>
+            <column name="depositor_email" type="VARCHAR(255)"/>
+            <column name="doi_type" type="INT"/>
+            <column name="xml" type="TEXT"/>
+            <column name="approved" type="BOOLEAN"/>
+            <column name="submitted" type="BOOLEAN"/>
+            <column name="submitted_at" type="TIMESTAMP"/>
+            <column name="successful" type="BOOLEAN"/>
+            <column name="created_by" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_by" type="TEXT"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </createTable>
+        <createTable tableName="dois">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="doi_batch_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="approver" type="TEXT"/>
+            <column name="approver_email" type="VARCHAR(255)"/>
+            <column name="person_responsible" type="TEXT"/>
+            <column name="person_responsible_email" type="VARCHAR(255)"/>
+            <column name="doi_type" type="INT"/>
+            <column name="status" type="TEXT"/>
+            <column name="successful" type="BOOLEAN"/>
+            <column name="created_by" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_by" type="TEXT"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+        </createTable>
+        <createTable tableName="standards">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resource_url" type="VARCHAR(255)"/>
+            <column name="published_date" type="DATE"/>
+            <column name="item_number" type="INT"/>
+            <column name="publisher_place" type="TEXT"/>
+            <column name="std_designator" type="TEXT"/>
+            <column name="standards_body_acronym" type="TEXT"/>
+            <column name="depositor_name" type="TEXT"/>
+            <column name="registrant" type="TEXT"/>
+            <column name="publisher_name" type="TEXT"/>
+            <column name="standards_body_name" type="TEXT"/>
+            <column name="organization" type="TEXT"/>
+            <column name="title" type="TEXT"/>
+            <column name="resource_link" type="TEXT"/>
+            <column name="email_address" type="VARCHAR(255)"/>
+            <column name="batch_id" type="UUID"/>
+            <column name="submitted_at" type="TIMESTAMP"/>
+            <column name="created_by" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="updated_by" type="TEXT"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="version" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cchen" id="1780584785863-2">
+        <sql>CREATE TYPE doi_type_enum AS ENUM ('standard', 'conference', 'articles', 'grants', 'posted_content', 'reports_papers')</sql>
+        <sql>CREATE TYPE status_enum AS ENUM ('Pending', 'Approved', 'Rejected')</sql>
+        <sql>ALTER TABLE batch DROP COLUMN doi_type</sql>
+        <sql>ALTER TABLE batch ADD COLUMN doi_type doi_type_enum</sql>
+        <sql>ALTER TABLE dois DROP COLUMN doi_type</sql>
+        <sql>ALTER TABLE dois ADD COLUMN doi_type doi_type_enum</sql>
+        <sql>ALTER TABLE dois DROP COLUMN status</sql>
+        <sql>ALTER TABLE dois ADD COLUMN status status_enum</sql>
+    </changeSet>
+    <changeSet author="cchen" id="1780584785863-3">
+        <createTable tableName="conference">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resource_url" type="VARCHAR(255)"/>
+            <column name="given_name" type="TEXT"/>
+            <column name="surname" type="TEXT"/>
+            <column name="conference_name" type="TEXT"/>
+            <column name="conference_theme" type="TEXT"/>
+            <column name="conference_acronym" type="TEXT"/>
+            <column name="conference_sponsor" type="TEXT"/>
+            <column name="conference_number" type="INT"/>
+            <column name="conference_location" type="TEXT"/>
+            <column name="conference_start_date" type="TIMESTAMP"/>
+            <column name="conference_end_date" type="TIMESTAMP"/>
+            <column name="proceedings_title" type="TEXT"/>
+            <column name="proceedings_subject" type="TEXT"/>
+            <column name="publisher_name" type="TEXT"/>
+            <column name="publisher_place" type="TEXT"/>
+            <column name="publication_year" type="INT"/>
+            <column name="isbn" type="TEXT"/>
+            <column name="timestamp" type="TIMESTAMP"/>
+            <column name="resource" type="TEXT"/>
+            <column name="batch_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cchen" id="1780584785863-4">
+        <createTable tableName="articles">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_title" type="TEXT"/>
+            <column name="abbrev_title" type="TEXT"/>
+            <column name="issn" type="TEXT"/>
+            <column name="coden" type="TEXT"/>
+            <column name="publication_date" type="TIMESTAMP"/>
+            <column name="journal_volume" type="INT"/>
+            <column name="journal_issue" type="INT"/>
+            <column name="article_title" type="TEXT"/>
+            <column name="contributors" type="JSONB"/>
+            <column name="pages" type="INT"/>
+            <column name="resource" type="TEXT"/>
+            <column name="batch_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cchen" id="1780584785863-5">
+        <createTable tableName="grants">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="project_title" type="TEXT"/>
+            <column name="recipients" type="JSONB"/>
+            <column name="description" type="TEXT"/>
+            <column name="statement" type="TEXT"/>
+            <column name="identifier" type="TEXT"/>
+            <column name="award_amount" type="DECIMAL"/>
+            <column name="award_number" type="DECIMAL"/>
+            <column name="funding_amount" type="DECIMAL"/>
+            <column name="funder_name" type="TEXT"/>
+            <column name="funder_id" type="TEXT"/>
+            <column name="funding_scheme" type="TEXT"/>
+            <column name="start_date" type="TIMESTAMP"/>
+            <column name="end_date" type="TIMESTAMP"/>
+            <column name="resource" type="TEXT"/>
+            <column name="batch_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cchen" id="1780584785863-6">
+        <createTable tableName="posted_content">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_title" type="TEXT"/>
+            <column name="contributors" type="JSONB"/>
+            <column name="title" type="TEXT"/>
+            <column name="posted_date" type="TIMESTAMP"/>
+            <column name="acceptance_date" type="TIMESTAMP"/>
+            <column name="institution" type="TEXT"/>
+            <column name="funders" type="JSONB"/>
+            <column name="program" type="TEXT"/>
+            <column name="resource" type="TEXT"/>
+            <column name="citations" type="JSONB"/>
+            <column name="batch_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="cchen" id="1780584785863-7">
+        <createTable tableName="reports_papers">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="doi" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contributors" type="JSONB"/>
+            <column name="title" type="TEXT"/>
+            <column name="edition_number" type="TEXT"/>
+            <column name="publication_date" type="TIMESTAMP"/>
+            <column name="publisher_name" type="TEXT"/>
+            <column name="publisher_place" type="TEXT"/>
+            <column name="institution" type="JSONB"/>
+            <column name="report_number" type="TEXT"/>
+            <column name="contract_number" type="TEXT"/>
+            <column name="resource" type="TEXT"/>
+            <column name="batch_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
