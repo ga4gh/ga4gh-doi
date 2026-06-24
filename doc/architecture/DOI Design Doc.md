@@ -2,38 +2,34 @@
 
 # GA4GH DOI Minting Service
 
-# Software Design Document
+**Software Design Document**
 
 Version: 0.1  
 Date: Jun 2, 2026  
 Author(s): [Chen Chen](mailto:chen.chen@ga4gh.org)  
 Status: Draft 
 
-# Revision history 
+## Revision history 
 
 | Version | Date | Author | Comments |
 | ----- | ----- | ----- | ----- |
 | 0.1 | Jun 2, 2026 | [Chen Chen](mailto:chen.chen@ga4gh.org) | Initial draft |
 | 0.2 | Jun 3, 2026 | [Jimmy Payyappilly](mailto:jimmy.payyappilly@ga4gh.org) | Rearrange sections Add details in sections  |
 | 0.3 | Jun 4, 2026 | [Chen Chen](mailto:chen.chen@ga4gh.org) | Expanded non-goals Added background and context |
+| 0.4 | Jun 23, 2026 | [Jimmy Payyappilly](mailto:jimmy.payyappilly@ga4gh.org) | Import from Google Doc into GitHub as markdown file. Fix formatting errors.  |
 
-[Introduction](#introduction)
 
-[System context and overview](#system-context-and-overview)
+## Introduction 
 
-[Intended Audience](#intended-audience)
+The Global Alliance for Genomics and Health (GA4GH) community develops free, open-source products that make it simple and safe to request, access, and study data stored anywhere. GA4GH products help organisations become effective data stewards. GA4GH unites an international community dedicated to advancing human health through genomic data. We build technical standards and policy frameworks and tools that will expand responsible, voluntary, and secure use of genomic and other related health data.
 
-[Scope](#scope)
+Since its inception, GA4GH has released a suite of technical standards enabling secure access of genomic data across distributed systems and networks, including API specifications and specifications for managing researcher identities and permissions. Each standard is designed to be interoperable with one another, such that multiple standards can be used in concert to enable complex researcher workflows involving federated compute and analysis.
 
-# Introduction {#introduction}
+### System context and overview 
 
-The GA4GH community develops free, open-source products that make it simple and safe to request, access, and study data stored anywhere. GA4GH products help organisations become effective data stewards. 
+To extend discoverability and be able to be cited by the scientific community, GA4GH needs the ability to mint DOIs of the technical standards and other artefacts created under GA4GH. The need was identified for a **uniform and consistent way for citing GA4GH specs**, which emerged in different GitHub issues. The objective of this document is to outline the design of the system developed by GA4GH Tech Team to create permanent identifiers for significant documentation, which are created within the process of GA4GH standards’ development. 
 
-## System context and overview {#system-context-and-overview}
-
-The need was identified for a **uniform and consistent way for citing GA4GH specs**, which emerged in different GitHub issues. The objective of this document is to outline the design of the system developed by GA4GH Tech Team to create permanent identifiers for significant documentation, which are created within the process of GA4GH standards’ development. 
-
-## Intended Audience  {#intended-audience}
+### Intended Audience 
 
 This document will be used, reviewed or be referred to by the following (non-exhaustive) \- 
 
@@ -42,15 +38,15 @@ This document will be used, reviewed or be referred to by the following (non-exh
 * Key stakeholders   
 * GA4GH community collaborators and implementers 
 
-## Scope {#scope}
+### Scope 
 
 The scope of this system is the citation of GA4GH documental outputs, like products, standards, protocols, technical specifications, white papers, relevant blog posts. Data or tools are not subject to this system. 
 
-# System design
+## System design
 
-## Goals and Non-Goals
+### Goals and Non-Goals
 
-### Goals:
+#### Goals:
 
 - Make it accessible for users to submit information to be minted as DOIs  
 - UI Form fields associated with the info required by crossref to mint DOIs  
@@ -64,22 +60,17 @@ The scope of this system is the citation of GA4GH documental outputs, like produ
 - Store and keep track of DOIs minted using the service  
 - Display the minted DOIs on the UI
 
-### Non-Goals: 
+#### Non-Goals: 
 
 - Autofill fields associated with DOIs  
 - Review the information that users provide  
 - Modify existing DOIs  
 - Delete DOIs
 
-## Background and Context
 
-The Global Alliance for Genomics and Health (GA4GH) unites an international community dedicated to advancing human health through genomic data. We build technical standards and policy frameworks and tools that will expand responsible, voluntary, and secure use of genomic and other related health data.
+### Architecture Overview
 
-Since its inception, GA4GH has released a suite of technical standards enabling secure access of genomic data across distributed systems and networks, including API specifications and specifications for managing researcher identities and permissions. Each standard is designed to be interoperable with one another, such that multiple standards can be used in concert to enable complex researcher workflows involving federated compute and analysis.
-
-To extend discoverability and be able to be cited by the scientific community, GA4GH needs the ability to mint DOIs of the technical standards created under GA4GH.
-
-4\. Architecture Overview
+The programme emphasises modularised application development to make it easier for supporting extensibility and robustness. The modularised approach helps make changes seamlessly while the system continues to work in minting DOIs. The layers of the application are - 
 
 1. Web UI  
 2. Client Layer  
@@ -90,16 +81,16 @@ To extend discoverability and be able to be cited by the scientific community, G
 
 ![][image1]
 
-5\. Key Components
+### Key Components
 
 API Layer: REST endpoints exposed to callers  
 Metadata Schema XML : A Schema provided by CrossRef of an XML that would be accepted by the CrossRef minting service  
 DOI Suffix and Designator Generator: Constructs the DOI prefix/suffix, handles uniqueness  
 Persistence Layer: stores minted DOIs and audit log
 
-6\. Data Model
+### Data Model
 
-7\. API Design
+### API Design
 
 - UI POST to service  
   - Xml or json with the data  
@@ -109,11 +100,11 @@ Persistence Layer: stores minted DOIs and audit log
   - Credentials for crossref  
 - GET for fetching existing DOIs
 
-8\. External Integrations
+### External Integrations
 
 CrossRef:
 
-9\. State Machine / Lifecycle  
+### State Machine / Lifecycle  
 DOI States:  
 draft → registered → active → tombstoned
 
