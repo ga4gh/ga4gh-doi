@@ -78,8 +78,8 @@ The programme emphasises modularised application development to make it easier f
 4. Business Logic  
 5. Database  
    
-
-![][image1]
+### Workflow
+![DOI workflow](img/doi-workflow.png)
 
 ### Key Components
 
@@ -88,7 +88,11 @@ Metadata Schema XML : A Schema provided by CrossRef of an XML that would be acce
 DOI Suffix and Designator Generator: Constructs the DOI prefix/suffix, handles uniqueness  
 Persistence Layer: stores minted DOIs and audit log
 
-### Data Model
+### Data Model 
+
+The database is designed to support the schema models required for GA4GH artefacts being DOI'ed. The entity relationship (ER) diagram detailing the database's schema for persistence is available (as of June 2026). 
+
+![DOI db ER](img/doi-db-er-diag.png)
 
 ### API Design
 
