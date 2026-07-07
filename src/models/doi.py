@@ -9,7 +9,7 @@ from sqlalchemy import Integer, String, Boolean, DateTime, Text, Date, Numeric, 
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
-from models.batch import Base, DoiType, doi_type_enum
+from src.models.batch import Base, DoiType, doi_type_enum
 from sqlalchemy.dialects.postgresql import ENUM as PgEnum
 
 status_enum = PgEnum('Pending', 'Approved', 'Rejected', name='status_enum', create_type=False)

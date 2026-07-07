@@ -1,7 +1,7 @@
 from typing import Any
 
-from models.batch import Batch
-from models.doi import Doi, Standard, Conference, Article, Grant, PostedContent, ReportWorkingPaper
+from src.models.batch import Batch
+from src.models.doi import Doi, Standard, Conference, Article, Grant, PostedContent, ReportWorkingPaper
 
 from sqlalchemy.orm import Session, selectinload, raiseload
 from sqlalchemy.exc import OperationalError
