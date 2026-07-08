@@ -58,7 +58,7 @@ class Standard(Base):
     id: Mapped[Optional[int]] = mapped_column(Integer, primary_key=True, autoincrement=True)
     doi: Mapped[str] = mapped_column(String(255), nullable=False)
     resource_url: Mapped[Optional[str]] = mapped_column(String(255))
-    publish_date: Mapped[Optional[datetime]] = mapped_column("published_date", Date)
+    published_date: Mapped[Optional[datetime]] = mapped_column("published_date", Date)
     item_number: Mapped[Optional[int]] = mapped_column(Integer)
     publisher_place: Mapped[Optional[str]] = mapped_column(Text)
     std_designator: Mapped[Optional[str]] = mapped_column(Text)

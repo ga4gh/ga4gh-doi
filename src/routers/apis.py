@@ -3,6 +3,7 @@ import tempfile
 from datetime import datetime
 
 from fastapi import APIRouter, HTTPException, UploadFile, File
+from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from sqlalchemy import select
 
@@ -13,10 +14,6 @@ from src.models.batch import Batch
 from src.models.doi import Doi, Standard, Conference, Article, Grant, PostedContent, ReportWorkingPaper
 
 router = APIRouter()
-
-
-def to_dict(obj):
-    return {c.key: getattr(obj, c.key) for c in obj.__mapper__.column_attrs}
 
 
 @router.post("/standards/upload")
@@ -69,56 +66,54 @@ def approve_standards(body: ApproveRequest):
 @router.get("/doi/{doi_type}")
 def get_doi_by_type(doi_type: str):
     with get_session() as session:
-        rows = session.execute(
-            select(Doi).where(Doi.doi_type == doi_type)
-        ).scalars().all()
-        return [to_dict(r) for r in rows]
+        repo = DBFunctions(session)
+        return jsonable_encoder(repo.get_all_by_field(Doi, "doi_type", doi_type))
 
 
 @router.get("/standards")
 def get_standards():
     with get_session() as session:
-        rows = session.execute(select(Standard)).scalars().all()
-        return [to_dict(r) for r in rows]
+        repo = DBFunctions(session)
+        return jsonable_encoder(repo.get_all(Standard))
 
 
 @router.get("/conference")
 def get_conference():
     with get_session() as session:
-        rows = session.execute(select(Conference)).scalars().all()
-        return [to_dict(r) for r in rows]
+        repo = DBFunctions(session)
+        return jsonable_encoder(repo.get_all(Conference))
 
 
 @router.get("/articles")
 def get_articles():
     with get_session() as session:
-        rows = session.execute(select(Article)).scalars().all()
-        return [to_dict(r) for r in rows]
+        repo = DBFunctions(session)
+        return jsonable_encoder(repo.get_all(Article))
 
 
 @router.get("/grants")
 def get_grants():
     with get_session() as session:
-        rows = session.execute(select(Grant)).scalars().all()
-        return [to_dict(r) for r in rows]
+        repo = DBFunctions(session)
+        return jsonable_encoder(repo.get_all(Grant))
 
 
 @router.get("/posted-content")
 def get_posted_content():
     with get_session() as session:
-        rows = session.execute(select(PostedContent)).scalars().all()
-        return [to_dict(r) for r in rows]
+        repo = DBFunctions(session)
+        return jsonable_encoder(repo.get_all(PostedContent))
 
 
 @router.get("/reports")
 def get_reports():
     with get_session() as session:
-        rows = session.execute(select(ReportWorkingPaper)).scalars().all()
-        return [to_dict(r) for r in rows]
+        repo = DBFunctions(session)
+        return jsonable_encoder(repo.get_all(ReportWorkingPaper))
 
 
 @router.get("/dois")
 def get_all_dois():
     with get_session() as session:
-        rows = session.execute(select(Doi)).scalars().all()
-        return [to_dict(r) for r in rows]
+        repo = DBFunctions(session)
+        return jsonable_encoder(repo.get_all(Doi))
