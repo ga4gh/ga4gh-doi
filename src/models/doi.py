@@ -9,7 +9,7 @@ from sqlalchemy import Integer, String, Boolean, DateTime, Text, Date, Numeric, 
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
-from models.batch import Base, DoiType, doi_type_enum
+from src.models.batch import Base, DoiType, doi_type_enum
 from sqlalchemy.dialects.postgresql import ENUM as PgEnum
 
 status_enum = PgEnum('Pending', 'Approved', 'Rejected', name='status_enum', create_type=False)
@@ -58,7 +58,7 @@ class Standard(Base):
     id: Mapped[Optional[int]] = mapped_column(Integer, primary_key=True, autoincrement=True)
     doi: Mapped[str] = mapped_column(String(255), nullable=False)
     resource_url: Mapped[Optional[str]] = mapped_column(String(255))
-    publish_date: Mapped[Optional[datetime]] = mapped_column("published_date", Date)
+    published_date: Mapped[Optional[datetime]] = mapped_column("published_date", Date)
     item_number: Mapped[Optional[int]] = mapped_column(Integer)
     publisher_place: Mapped[Optional[str]] = mapped_column(Text)
     std_designator: Mapped[Optional[str]] = mapped_column(Text)

@@ -1,7 +1,7 @@
 import uuid
 import pandas as pd
-from services.suffixGenerator import generateSuffix
-from services.createRecords import CreateRecords
+from src.services.suffix_generator import generateSuffix
+from src.services.create_records import CreateRecords
 from datetime import datetime
 
 def CSVtoXML(inputfile,outputfile):

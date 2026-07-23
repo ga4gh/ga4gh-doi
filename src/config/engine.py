@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from importlib import util
-from config.database import db_settings
+from src.config.database import db_settings
 
 
 # Ensure the SQLAlchemy URL uses a DBAPI driver that is actually installed.

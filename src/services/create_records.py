@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from models.batch import Batch
-from models.doi import Doi, Standard, Article, Conference, Grant, PostedContent, ReportWorkingPaper
+from src.models.batch import Batch
+from src.models.doi import Doi, Standard, Article, Conference, Grant, PostedContent, ReportWorkingPaper
 
 
 class CreateRecords:
