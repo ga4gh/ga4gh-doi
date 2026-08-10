@@ -99,6 +99,29 @@ class StandardRequest(BaseModel):
     batch_id: Optional[uuid.UUID] = None
 
 
+class StandardRowInput(BaseModel):
+    title: str
+    resource_url: str
+    publish_date: str
+    item_number: str = ""
+    publisher_place: str
+    std_designator: str
+    standards_body_acronym: str
+    depositor_name: str = ""
+    registrant: str
+    publisher_name: str
+    standards_body_name: str
+    organization: str
+    email_address: str
+
+
+class StandardsSubmitRequest(BaseModel):
+    standards: List[StandardRowInput] = []
+    csv_text: Optional[str] = None
+    deposited_by: str
+    depositor_email: str
+
+
 class Conference(Base):
     __tablename__ = "conference"
 

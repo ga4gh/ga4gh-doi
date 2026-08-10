@@ -36,6 +36,7 @@ class Batch(Base):
     deposited_by: Mapped[Optional[str]] = mapped_column(String(255))
     depositor_email: Mapped[Optional[str]] = mapped_column(Text)
     doi_type: Mapped[Optional[str]] = mapped_column(doi_type_enum)
+    csv: Mapped[Optional[str]] = mapped_column(Text)
     xml: Mapped[Optional[str]] = mapped_column(Text)
     approved: Mapped[Optional[bool]] = mapped_column(Boolean, default=False)
     submitted: Mapped[Optional[bool]] = mapped_column(Boolean, default=False)
@@ -54,3 +55,9 @@ class BatchRequest(BaseModel):
     doi_type: DoiType
     approved: bool = False
     successful: bool = False
+
+
+class ApproveRequest(BaseModel):
+    batch_id: str
+    approved: bool
+    approver_email: str
