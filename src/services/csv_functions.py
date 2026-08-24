@@ -1,5 +1,6 @@
 import csv
 import io
+import json
 from datetime import datetime
 from typing import List
 
@@ -13,8 +14,34 @@ STANDARDS_CSV_COLUMNS = [
     "month", "day", "year", "item_number", "doi", "publisher_place",
     "std_designator", "standards_body_acronym", "depositor_name", "registrant",
     "publisher_name", "standards_body_name", "organization", "title",
+    "abstract_title", "abstract", "contributors",
     "resource", "email_address", "doi_batch_id", "timestamp",
 ]
+
+
+def read_optional_cell(df, j, column):
+    """Read an optional CSV cell, treating a missing column or NaN as empty."""
+    if column not in df.columns:
+        return ""
+    value = df[column][j]
+    return "" if str(value) == "nan" else str(value)
+
+
+def format_authors(contributors_json):
+    """Turn the CSV's JSON contributors list into a human-readable "First Last, First Last" string."""
+    if not contributors_json:
+        return ""
+    try:
+        contributors = json.loads(contributors_json)
+    except ValueError:
+        return ""
+
+    names = []
+    for contributor in contributors:
+        full_name = " ".join(part for part in (contributor.get("first_name", ""), contributor.get("last_name", "")) if part)
+        if full_name:
+            names.append(full_name)
+    return ", ".join(names)
 
 
 def _wrapped_header() -> List[str]:
@@ -35,6 +62,11 @@ def generate_unique_doi(session: Session) -> str:
             return doi_value
 
 
+def _non_empty_contributors(contributors: List[dict]) -> List[dict]:
+    """Drop any contributor with neither a first nor last name."""
+    return [c for c in contributors if c.get("first_name") or c.get("last_name")]
+
+
 def build_standards_csv(rows: List[StandardRowInput], batch_id: str, now: datetime, session: Session) -> str:
     timestamp = now.strftime("%Y%m%d%H%M")
     csv_rows = [_wrapped_header()]
@@ -44,6 +76,8 @@ def build_standards_csv(rows: List[StandardRowInput], batch_id: str, now: dateti
             publish_date = datetime.fromisoformat(row.publish_date)
         except ValueError as exc:
             raise ValueError(f"Invalid publish date: {row.publish_date!r}") from exc
+
+        contributors = _non_empty_contributors(row.contributors)
 
         values = {
             "month": publish_date.month,
@@ -60,6 +94,9 @@ def build_standards_csv(rows: List[StandardRowInput], batch_id: str, now: dateti
             "standards_body_name": row.standards_body_name,
             "organization": row.organization,
             "title": row.title,
+            "abstract_title": row.abstract_title,
+            "abstract": row.abstract,
+            "contributors": json.dumps(contributors) if contributors else "",
             "resource": row.resource_url,
             "email_address": row.email_address,
             "doi_batch_id": batch_id,

@@ -29,6 +29,8 @@
   <div class="doi-fields" data-doi-type="standards" hidden>
     <h3 class="span-2">Standard</h3>
     <label><span class="label-text">Title <button type="button" class="info-icon" data-tooltip="Full title of the standard document." aria-label="More info about Title">i</button></span> <input type="text" name="title" data-sample="Sample Standard Title" disabled required /></label>
+    <label><span class="label-text">Abstract Title <button type="button" class="info-icon" data-tooltip="Optional title for the abstract." aria-label="More info about Abstract Title">i</button></span> <input type="text" name="abstract_title" data-sample="Abstract" disabled /></label>
+    <label class="span-2"><span class="label-text">Abstract <button type="button" class="info-icon" data-tooltip="Optional abstract describing the standard." aria-label="More info about Abstract">i</button></span> <textarea name="abstract" rows="3" data-sample="Brief summary of the standard." disabled></textarea></label>
     <label><span class="label-text">Resource URL <button type="button" class="info-icon" data-tooltip="Public URL where the standard can be accessed." aria-label="More info about Resource URL">i</button></span> <input type="url" name="resource_url" data-sample="https://example.org/standard" disabled required /></label>
     <label><span class="label-text">Publish Date <button type="button" class="info-icon" data-tooltip="Date and time the standard was published." aria-label="More info about Publish Date">i</button></span> <input type="datetime-local" name="publish_date" data-sample="2024-01-01T00:00" disabled required /></label>
     <label><span class="label-text">Item Number <button type="button" class="info-icon" data-tooltip="Sequential number identifying this item, if applicable." aria-label="More info about Item Number">i</button></span> <input type="number" name="item_number" data-sample="1" disabled /></label>
@@ -41,6 +43,15 @@
     <label><span class="label-text">Standards Body Name <button type="button" class="info-icon" data-tooltip="Full name of the standards body." aria-label="More info about Standards Body Name">i</button></span> <input type="text" name="standards_body_name" data-sample="International Organization for Standardization" disabled required /></label>
     <label><span class="label-text">Organization <button type="button" class="info-icon" data-tooltip="Organization associated with this submission." aria-label="More info about Organization">i</button></span> <input type="text" name="organization" data-sample="GA4GH" disabled required /></label>
     <label><span class="label-text">Email Address <button type="button" class="info-icon" data-tooltip="Contact email address for this submission." aria-label="More info about Email Address">i</button></span> <input type="email" name="email_address" data-sample="name@example.org" disabled required /></label>
+
+    <div class="span-2 contributors-section">
+      <span class="label-text">Contributors <button type="button" class="info-icon" data-tooltip="Optional list of additional contributors (first and last name)." aria-label="More info about Contributors">i</button></span>
+      <div class="contributors-controls">
+        <button type="button" id="standards-contributor-add" class="btn-like btn-add">+</button>
+        <button type="button" id="standards-contributor-remove" class="btn-like btn-submit">-</button>
+      </div>
+      <div id="standards-contributor-rows"></div>
+    </div>
   </div>
 
   <div class="doi-fields" data-doi-type="conference" hidden>

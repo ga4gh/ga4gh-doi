@@ -16,7 +16,7 @@ from src.services.api_functions import (
 )
 from src.services.csv_to_xml import csv_text_to_standards
 from src.services.email_service import send_registration_notification, send_rejection_email
-from src.services.standards_csv import build_standards_csv, build_standards_template
+from src.services.csv_functions import build_standards_csv, build_standards_template
 from src.models.batch import ApproveRequest, Batch
 from src.models.doi import (
     Article,

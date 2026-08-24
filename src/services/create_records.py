@@ -2,6 +2,7 @@ from datetime import datetime
 
 from src.models.batch import Batch
 from src.models.doi import Doi, Standard, Article, Conference, Grant, PostedContent, ReportWorkingPaper
+from src.services.csv_functions import format_authors, read_optional_cell
 
 
 class CreateRecords:
@@ -57,7 +58,9 @@ class CreateRecords:
             standards_body_name=str(df["<standards_body_name>"][j]),
             organization=str(df["<organization>"][j]),
             title=str(df["<title>"][j]),
-            resource_link=str(df["<resource>"][j]),
+            abstract_title=read_optional_cell(df, j, "<abstract_title>"),
+            abstract=read_optional_cell(df, j, "<abstract>"),
+            authors=format_authors(read_optional_cell(df, j, "<contributors>")),
             email_address=str(df["<email_address>"].iloc[0]),
             batch_id=None,
         )

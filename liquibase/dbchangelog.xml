@@ -63,7 +63,10 @@
             <column name="standards_body_name" type="TEXT"/>
             <column name="organization" type="TEXT"/>
             <column name="title" type="TEXT"/>
-            <column name="resource_link" type="TEXT"/>
+            <column name="abstract_title" type="TEXT"/>
+            <column name="abstract" type="TEXT"/>
+            <column name="authors" type="TEXT"/>
+            <column name="approval_date" type="DATE"/>
             <column name="email_address" type="VARCHAR(255)"/>
             <column name="batch_id" type="UUID"/>
             <column name="submitted_at" type="TIMESTAMP"/>

@@ -1,6 +1,8 @@
 import io
+import json
 import uuid
 import pandas as pd
+from src.services.csv_functions import read_optional_cell
 from src.services.designator_generator import generateDesignator
 from src.services.suffix_generator import generateSuffix
 from src.services.create_records import CreateRecords
@@ -60,6 +62,40 @@ def CSVtoXML(inputfile,outputfile=None):
     return entireop, batch, standards
 
 
+def _contributors_xml(df, j):
+    """Build <person_name> entries for any additional contributors beyond the organization."""
+    try:
+        contributors = json.loads(read_optional_cell(df, j, "<contributors>") or "[]")
+    except ValueError:
+        contributors = []
+
+    xml = ""
+    for contributor in contributors:
+        given_name = contributor.get("first_name", "")
+        surname = contributor.get("last_name", "")
+        if not given_name and not surname:
+            continue
+        xml += '<person_name sequence="additional" contributor_role="author">\n'\
+               '<given_name>' + str(given_name) + '</given_name>\n'\
+               '<surname>' + str(surname) + '</surname>\n'\
+               '</person_name>\n'
+    return xml
+
+
+def _abstract_xml(df, j):
+    """Build the optional JATS <abstract> block, or "" if no abstract text was given."""
+    abstract_text = read_optional_cell(df, j, "<abstract>")
+    if not abstract_text:
+        return ""
+
+    abstract_title = read_optional_cell(df, j, "<abstract_title>")
+    title_xml = ('<title>' + abstract_title + '</title>\n') if abstract_title else ""
+    return '<abstract xmlns="http://www.ncbi.nlm.nih.gov/JATS1">\n'\
+           + title_xml +\
+           '<p>' + abstract_text + '</p>\n'\
+           '</abstract>\n'
+
+
 def addStandard(df, j):
     suffix = str(generateSuffix())
 
@@ -87,10 +123,12 @@ def addStandard(df, j):
           '<standard_metadata language="en">\n'\
           '<contributors>\n'\
           '<organization sequence="first" contributor_role="author">' + str(df["<organization>"][j]) + '</organization>\n'\
+          + _contributors_xml(df, j) +\
           '</contributors>\n'\
           '<titles>\n'\
           '<title>'+ str(df["<title>"][j]).replace("&", "&amp;") +'</title>\n'\
           '</titles>\n'\
+          + _abstract_xml(df, j) +\
           '<designators>\n'\
           '<std_as_published undated="'+ str(df["<std_designator>"][j]) +'">\n'\
           '<std_designator>'+ std_designator +'</std_designator>\n'\

@@ -42,15 +42,10 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// Other DOI-type sections aren't wired up to a real submit handler yet, so
+// this is the fallback that keeps their forms from actually navigating away.
 document.querySelectorAll("form").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    const data = new FormData(form);
-    form.querySelectorAll("[data-sample].is-sample:not(:disabled)").forEach((field) => {
-      data.set(field.name, "");
-    });
-
-    console.log(`Submitted form: ${form.dataset.form}`, Object.fromEntries(data.entries()));
   });
 });
