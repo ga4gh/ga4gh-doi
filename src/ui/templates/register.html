@@ -47,8 +47,8 @@
     <div class="span-2 contributors-section">
       <span class="label-text">Contributors <button type="button" class="info-icon" data-tooltip="Optional list of additional contributors (first and last name)." aria-label="More info about Contributors">i</button></span>
       <div class="contributors-controls">
-        <button type="button" id="standards-contributor-add" class="btn-like btn-add">+</button>
-        <button type="button" id="standards-contributor-remove" class="btn-like btn-submit">-</button>
+        <button type="button" id="standards-contributor-add" class="ga4gh-btn-dark"><span class="btn-text">+</span></button>
+        <button type="button" id="standards-contributor-remove" class="ga4gh-btn-dark"><span class="btn-text">-</span></button>
       </div>
       <div id="standards-contributor-rows"></div>
     </div>
@@ -148,8 +148,8 @@
     <label><span class="label-text">Batch ID <button type="button" class="info-icon" data-tooltip="Optional identifier grouping this submission with others." aria-label="More info about Batch ID">i</button></span> <input type="text" name="batch_id" data-sample="batch-001" disabled /></label>
   </div>
 
-  <button type="add">Add</button>
-  <button type="submit">Submit</button>
+  <button type="add" class="ga4gh-btn-dark"><span class="btn-text">Add</span></button>
+  <button type="submit" class="ga4gh-btn-dark"><span class="btn-text">Submit</span></button>
   <span id="standards-submit-spinner" class="spinner" hidden aria-live="polite">Submitting…</span>
 </form>
 
@@ -168,8 +168,8 @@
   </div>
   <br />
   <div class="queue-actions">
-    <a href="/standards/template" download class="btn-like btn-add">Download CSV</a>
-    <button type="button" id="standards-upload-btn" class="btn-like btn-submit">Upload CSV</button>
+    <button type="button" id="standards-upload-btn" class="ga4gh-btn-dark"><span class="btn-text">Upload CSV</span></button>
+    <a href="/standards/template" download class="ga4gh-btn-dark"><span class="btn-text">Download CSV</span></a>
     <input type="file" id="standards-upload-input" accept=".csv" hidden />
   </div>
 </section>

@@ -6,7 +6,10 @@
 <h2>{{ heading }}</h2>
 <!-- Columns match src/models/doi.py: {{ model_name }} -->
 <div class="table-page">
-  <input type="search" class="table-search" data-table-search placeholder="Search {{ heading }}…" />
+  <div class="table-controls-top">
+    <input type="search" class="table-search" data-table-search placeholder="Search {{ heading }}…" />
+    <div class="page-size-group" data-table-page-size></div>
+  </div>
   <div class="table-wrap">
     <table data-api="{{ api_endpoint }}">
       <thead>
@@ -19,6 +22,7 @@
       <tbody></tbody>
     </table>
   </div>
+  <div class="pagination" data-table-pagination></div>
 </div>
 {% endblock %}
 

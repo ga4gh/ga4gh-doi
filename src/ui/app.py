@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 
 from fastapi import APIRouter, Request
@@ -15,7 +16,12 @@ templates = Jinja2Templates(directory=TEMPLATES_DIR)
 
 
 def render(request: Request, template_name: str, active_tab: str, **extra):
-    context = {"nav_tabs": NAV_TABS, "active_tab": active_tab, **extra}
+    context = {
+        "nav_tabs": NAV_TABS,
+        "active_tab": active_tab,
+        "current_year": datetime.now().year,
+        **extra,
+    }
     return templates.TemplateResponse(request, template_name, context)
 
 

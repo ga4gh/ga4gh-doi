@@ -7,15 +7,37 @@
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
-  <header>
-    <img src="/assets/logo-full-color.svg" alt="GA4GH Logo" class="logo" />
-    <h1>GA4GH DOI Service</h1>
-    <nav class="tabs">
-      {% for tab in nav_tabs %}
-      <a class="tab-link{% if tab.href == active_tab %} active{% endif %}" href="{{ tab.href }}">{{ tab.label }}</a>
-      {% endfor %}
-    </nav>
-  </header>
+  <div class="top-bar">
+    <div class="top-bar-row">
+      <div class="logo-col">
+        <a href="/" class="brand-link">
+          <span class="brand-lockup">
+            <img
+              src="/assets/logo-mark-color.svg"
+              alt="The Global Alliance for Genomics and Health"
+              class="brand-logo-img"
+            />
+            <span class="brand-text-primary">GA4GH</span>
+            <span class="brand-text-base">DOI Service</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="menu-col">
+        <nav class="menu-container">
+          {% for tab in nav_tabs %}
+          <a class="menu-link{% if tab.href == active_tab %} active{% endif %}" href="{{ tab.href }}">{{ tab.label }}</a>
+          {% endfor %}
+        </nav>
+      </div>
+
+      <button id="mobile-menu-toggle-btn" class="mobile-menu-toggle-col" aria-label="Toggle menu">
+        <span class="mob-menu-trigger-wrapper">
+          <span id="mob-menu-trigger"></span>
+        </span>
+      </button>
+    </div>
+  </div>
 
   <main>
     <section class="tab-content">
@@ -23,6 +45,35 @@
     </section>
   </main>
 
+  <footer class="footer">
+    <div class="ga4gh-footer-container">
+      <aside class="f-logo">
+        <img
+          src="/assets/logo-mark-white.svg"
+          alt="The Global Alliance for Genomics and Health"
+          class="f-logo-img"
+        />
+        <p class="f-logo-text">
+          GA4GH DOI Service<br />
+          Global Alliance for Genomics and Health
+        </p>
+        <p>Copyright &copy; {{ current_year }}</p>
+      </aside>
+      <nav class="f-social">
+        <a class="ga4gh-btn-light" href="https://www.ga4gh.org" target="_blank" rel="noopener noreferrer">
+          <span class="btn-text btn-icon-globe">GA4GH</span>
+        </a>
+        <a class="ga4gh-btn-light" href="https://refcloud.ga4gh.org/" target="_blank" rel="noopener noreferrer">
+          <span class="btn-text">RefCloud</span>
+        </a>
+        <a class="ga4gh-btn-light" href="https://dashboard.ga4gh.org" target="_blank" rel="noopener noreferrer">
+          <span class="btn-text">Dashboard</span>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/mobile_nav.js"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>
