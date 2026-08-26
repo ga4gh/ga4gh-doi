@@ -104,6 +104,17 @@ def send_rejection_email(to_email: str, batch_id: str) -> None:
 
 
 def send_success_email(to_email: str, batch_id: str) -> None:
-    # TODO: fill in the success notification sent once a batch is approved
-    # and successfully submitted to Crossref.
-    pass
+    subject = f"DOI Submission Approved - {batch_id}"
+    html_body = f"<p>Your DOI submission (batch {batch_id}) has been approved.</p>"
+    _send_email(recipients=[to_email], subject=subject, html_body=html_body)
+
+
+def send_submission_failed_email(depositor_email: str, approver_email: str, batch_id: str, details: str = "") -> None:
+    subject = f"DOI Submission Failed - {batch_id}"
+    html_body = f"<p>Batch {batch_id} was approved and submitted to Crossref, but Crossref failed the submission.</p>"
+    if details:
+        html_body += f"<pre style='white-space:pre-wrap;'>{details}</pre>"
+
+    recipients = {email for email in (depositor_email, approver_email) if email}
+    for recipient in recipients:
+        _send_email(recipients=[recipient], subject=subject, html_body=html_body)

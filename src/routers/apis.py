@@ -15,7 +15,12 @@ from src.services.api_functions import (
     submit_batch_xml_to_crossref,
 )
 from src.services.csv_to_xml import csv_text_to_standards
-from src.services.email_service import send_registration_notification, send_rejection_email
+from src.services.email_service import (
+    send_registration_notification,
+    send_rejection_email,
+    send_submission_failed_email,
+    send_success_email,
+)
 from src.services.csv_functions import build_standards_csv, build_standards_template
 from src.models.batch import ApproveRequest, Batch
 from src.models.doi import (
@@ -132,19 +137,32 @@ def approve_standards_batch_email(batch_id: str, approver_email: str = None):
             batch.successful = False
             raise HTTPException(status_code=502, detail=f"Crossref submission failed: {exc}") from exc
 
-        if not batch.successful:
-            return f"<p>Batch {batch_id} was submitted to Crossref but minting failed.</p><pre>{crossref_response}</pre>"
+        successful = batch.successful
+        depositor_email = batch.depositor_email
 
+        if successful:
+            try:
+                standards = csv_text_to_standards(batch.csv or "")
+                for standard in standards:
+                    standard.batch_id = uuid.UUID(batch.doi_batch_id)
+                    standard.submitted_at = batch.submitted_at
+                    standard.registrant = batch.deposited_by
+                    repo.insert(standard)
+                    record_minted_doi(repo, standard.doi, batch, approver_email)
+            except Exception as exc:
+                raise HTTPException(status_code=500, detail=f"Failed to record minted standards: {exc}") from exc
+
+    if not successful:
         try:
-            standards = csv_text_to_standards(batch.csv or "")
-            for standard in standards:
-                standard.batch_id = uuid.UUID(batch.doi_batch_id)
-                standard.submitted_at = batch.submitted_at
-                standard.registrant = batch.deposited_by
-                repo.insert(standard)
-                record_minted_doi(repo, standard.doi, batch, approver_email)
+            send_submission_failed_email(depositor_email, approver_email, batch_id, crossref_response)
         except Exception as exc:
-            raise HTTPException(status_code=500, detail=f"Failed to record minted standards: {exc}") from exc
+            print("Error sending submission failed email:", exc)
+        return f"<p>Batch {batch_id} was submitted to Crossref but minting failed.</p><pre>{crossref_response}</pre>"
+
+    try:
+        send_success_email(depositor_email, batch_id)
+    except Exception as exc:
+        print("Error sending success email:", exc)
 
     return f"<p>Batch {batch_id} approved and submitted to Crossref.</p>"
 
