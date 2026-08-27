@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}GA4GH DOI Service{% endblock %}</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <header>
+    <img src="/assets/logo-full-color.svg" alt="GA4GH Logo" class="logo" />
+    <h1>GA4GH DOI Service</h1>
+    <nav class="tabs">
+      {% for tab in nav_tabs %}
+      <a class="tab-link{% if tab.href == active_tab %} active{% endif %}" href="{{ tab.href }}">{{ tab.label }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <main>
+    <section class="tab-content">
+      {% block content %}{% endblock %}
+    </section>
+  </main>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

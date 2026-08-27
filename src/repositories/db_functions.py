@@ -1,7 +1,7 @@
 from datetime import date, datetime
 from decimal import Decimal
 from enum import Enum
-from typing import Any, TypeVar
+from typing import Any, Optional, TypeVar
 from uuid import UUID
 
 from sqlalchemy import select
@@ -36,6 +36,11 @@ class DBFunctions:
             select(model_class).where(getattr(model_class, field_name) == value)
         ).scalars().all()
         return [self.serialize_entity(row) for row in rows]
+
+    def get_one_by_field(self, model_class: type[T], field_name: str, value: Any) -> Optional[T]:
+        return self.db.execute(
+            select(model_class).where(getattr(model_class, field_name) == value)
+        ).scalar_one_or_none()
 
     @staticmethod
     def serialize_entity(entity: Any) -> dict[str, Any]:

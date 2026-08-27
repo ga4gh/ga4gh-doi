@@ -2,6 +2,7 @@ from datetime import datetime
 
 from src.models.batch import Batch
 from src.models.doi import Doi, Standard, Article, Conference, Grant, PostedContent, ReportWorkingPaper
+from src.services.csv_functions import format_authors, read_optional_cell
 
 
 class CreateRecords:
@@ -11,8 +12,8 @@ class CreateRecords:
     def create_batch(df, timestamp):
         return Batch(
             doi_batch_id=timestamp,
-            deposited_by=str(df["<depositor_name>"][1]),
-            depositor_email=str(df["<email_address>"][1]),
+            deposited_by=str(df["<depositor_name>"].iloc[0]),
+            depositor_email=str(df["<email_address>"].iloc[0]),
             doi_type='standard',
             xml=None,
             approved=False,
@@ -46,19 +47,21 @@ class CreateRecords:
         return Standard(
             doi=doi_value,
             resource_url=str(df["<resource>"][j]),
-            publish_date=publish_date,
+            published_date=publish_date,
             item_number=None,
             publisher_place=str(df["<publisher_place>"][j]),
             std_designator=str(df["<std_designator>"][j]),
             standards_body_acronym=str(df["<standards_body_acronym>"][j]),
-            depositor_name=str(df["<depositor_name>"][1]),
-            registrant=str(df["<registrant>"][1]),
+            depositor_name=str(df["<depositor_name>"].iloc[0]),
+            registrant=str(df["<registrant>"].iloc[0]),
             publisher_name=str(df["<publisher_name>"][j]),
             standards_body_name=str(df["<standards_body_name>"][j]),
             organization=str(df["<organization>"][j]),
             title=str(df["<title>"][j]),
-            resource_link=str(df["<resource>"][j]),
-            email_address=str(df["<email_address>"][1]),
+            abstract_title=read_optional_cell(df, j, "<abstract_title>"),
+            abstract=read_optional_cell(df, j, "<abstract>"),
+            authors=format_authors(read_optional_cell(df, j, "<contributors>")),
+            email_address=str(df["<email_address>"].iloc[0]),
             batch_id=None,
         )
 

@@ -11,6 +11,7 @@
             <column name="deposited_by" type="VARCHAR(255)"/>
             <column name="depositor_email" type="VARCHAR(255)"/>
             <column name="doi_type" type="INT"/>
+            <column name="csv" type="TEXT"/>
             <column name="xml" type="TEXT"/>
             <column name="approved" type="BOOLEAN"/>
             <column name="submitted" type="BOOLEAN"/>
@@ -62,7 +63,10 @@
             <column name="standards_body_name" type="TEXT"/>
             <column name="organization" type="TEXT"/>
             <column name="title" type="TEXT"/>
-            <column name="resource_link" type="TEXT"/>
+            <column name="abstract_title" type="TEXT"/>
+            <column name="abstract" type="TEXT"/>
+            <column name="authors" type="TEXT"/>
+            <column name="approval_date" type="DATE"/>
             <column name="email_address" type="VARCHAR(255)"/>
             <column name="batch_id" type="UUID"/>
             <column name="submitted_at" type="TIMESTAMP"/>
@@ -74,8 +78,16 @@
         </createTable>
     </changeSet>
     <changeSet author="cchen" id="1780584785863-2">
-        <sql>CREATE TYPE doi_type_enum AS ENUM ('standard', 'conference', 'articles', 'grants', 'posted_content', 'reports_papers')</sql>
-        <sql>CREATE TYPE status_enum AS ENUM ('Pending', 'Approved', 'Rejected')</sql>
+        <sql>DO $$ BEGIN
+            CREATE TYPE doi_type_enum AS ENUM ('standard', 'conference', 'articles', 'grants', 'posted_content', 'reports_papers');
+        EXCEPTION
+            WHEN duplicate_object THEN null;
+        END $$;</sql>
+        <sql>DO $$ BEGIN
+            CREATE TYPE status_enum AS ENUM ('Pending', 'Approved', 'Rejected');
+        EXCEPTION
+            WHEN duplicate_object THEN null;
+        END $$;</sql>
         <sql>ALTER TABLE batch DROP COLUMN doi_type</sql>
         <sql>ALTER TABLE batch ADD COLUMN doi_type doi_type_enum</sql>
         <sql>ALTER TABLE dois DROP COLUMN doi_type</sql>

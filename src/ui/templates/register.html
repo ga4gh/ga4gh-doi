@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}GA4GH DOI Service - Register{% endblock %}
+
+{% block content %}
+<h2>Register a DOI</h2>
+<div class="register-layout">
+<form data-form="register">
+  <h3 class="span-2">Registrant</h3>
+  <label><span class="label-text">Name <button type="button" class="info-icon" data-tooltip="Full name of the person registering this DOI." aria-label="More info about Name">i</button></span> <input type="text" name="registrant_name" data-sample="Jane Doe" required /></label>
+  <label><span class="label-text">Organization <button type="button" class="info-icon" data-tooltip="Organization the registrant belongs to." aria-label="More info about Organization">i</button></span> <input type="text" name="registrant_organization" data-sample="GA4GH" required /></label>
+  <label><span class="label-text">Email <button type="button" class="info-icon" data-tooltip="Contact email address of the registrant." aria-label="More info about Email">i</button></span> <input type="email" name="registrant_email" data-sample="name@example.org" required /></label>
+  <label><span class="label-text">Phone Number <button type="button" class="info-icon" data-tooltip="Contact phone number of the registrant." aria-label="More info about Phone Number">i</button></span> <input type="tel" name="registrant_phone" data-sample="+1 555 123 4567" required /></label>
+
+  <h3 class="span-2">DOI Type</h3>
+  <label class="span-2">
+    <span class="label-text">Select DOI Type <button type="button" class="info-icon" data-tooltip="Choose the kind of resource you want to register a DOI for." aria-label="More info about DOI Type">i</button></span>
+    <select id="doi-type-select" name="doi_type" required>
+      <option value="" selected disabled>Select a DOI type…</option>
+      <option value="standards">Standard</option>
+      <option value="conference">Conference</option>
+      <option value="articles">Article</option>
+      <option value="grants">Grant</option>
+      <option value="posted-content">Posted Content</option>
+      <option value="reports">Report / Working Paper</option>
+    </select>
+  </label>
+
+  <div class="doi-fields" data-doi-type="standards" hidden>
+    <h3 class="span-2">Standard</h3>
+    <label><span class="label-text">Title <button type="button" class="info-icon" data-tooltip="Full title of the standard document." aria-label="More info about Title">i</button></span> <input type="text" name="title" data-sample="Sample Standard Title" disabled required /></label>
+    <label><span class="label-text">Abstract Title <button type="button" class="info-icon" data-tooltip="Optional title for the abstract." aria-label="More info about Abstract Title">i</button></span> <input type="text" name="abstract_title" data-sample="Abstract" disabled /></label>
+    <label class="span-2"><span class="label-text">Abstract <button type="button" class="info-icon" data-tooltip="Optional abstract describing the standard." aria-label="More info about Abstract">i</button></span> <textarea name="abstract" rows="3" data-sample="Brief summary of the standard." disabled></textarea></label>
+    <label><span class="label-text">Resource URL <button type="button" class="info-icon" data-tooltip="Public URL where the standard can be accessed." aria-label="More info about Resource URL">i</button></span> <input type="url" name="resource_url" data-sample="https://example.org/standard" disabled required /></label>
+    <label><span class="label-text">Publish Date <button type="button" class="info-icon" data-tooltip="Date and time the standard was published." aria-label="More info about Publish Date">i</button></span> <input type="datetime-local" name="publish_date" data-sample="2024-01-01T00:00" disabled required /></label>
+    <label><span class="label-text">Item Number <button type="button" class="info-icon" data-tooltip="Sequential number identifying this item, if applicable." aria-label="More info about Item Number">i</button></span> <input type="number" name="item_number" data-sample="1" disabled /></label>
+    <label><span class="label-text">Publisher Place <button type="button" class="info-icon" data-tooltip="City and country of the publisher." aria-label="More info about Publisher Place">i</button></span> <input type="text" name="publisher_place" data-sample="Geneva, Switzerland" disabled required /></label>
+    <label><span class="label-text">Standard Designator <button type="button" class="info-icon" data-tooltip="Official designator or code assigned to the standard, e.g. ISO 8601-1:2019." aria-label="More info about Standard Designator">i</button></span> <input type="text" name="std_designator" data-sample="ISO 8601-1:2019" disabled required /></label>
+    <label><span class="label-text">Standards Body Acronym <button type="button" class="info-icon" data-tooltip="Acronym of the organization that issued the standard." aria-label="More info about Standards Body Acronym">i</button></span> <input type="text" name="standards_body_acronym" data-sample="ISO" disabled required /></label>
+    <label><span class="label-text">Depositor Name <button type="button" class="info-icon" data-tooltip="Name of the person depositing this metadata." aria-label="More info about Depositor Name">i</button></span> <input type="text" name="depositor_name" data-sample="Jane Doe" disabled /></label>
+    <label><span class="label-text">Registrant <button type="button" class="info-icon" data-tooltip="Organization registering this DOI." aria-label="More info about Registrant">i</button></span> <input type="text" name="registrant" data-sample="GA4GH" disabled required /></label>
+    <label><span class="label-text">Publisher Name <button type="button" class="info-icon" data-tooltip="Name of the organization that published the standard." aria-label="More info about Publisher Name">i</button></span> <input type="text" name="publisher_name" data-sample="International Organization for Standardization" disabled required /></label>
+    <label><span class="label-text">Standards Body Name <button type="button" class="info-icon" data-tooltip="Full name of the standards body." aria-label="More info about Standards Body Name">i</button></span> <input type="text" name="standards_body_name" data-sample="International Organization for Standardization" disabled required /></label>
+    <label><span class="label-text">Organization <button type="button" class="info-icon" data-tooltip="Organization associated with this submission." aria-label="More info about Organization">i</button></span> <input type="text" name="organization" data-sample="GA4GH" disabled required /></label>
+    <label><span class="label-text">Email Address <button type="button" class="info-icon" data-tooltip="Contact email address for this submission." aria-label="More info about Email Address">i</button></span> <input type="email" name="email_address" data-sample="name@example.org" disabled required /></label>
+
+    <div class="span-2 contributors-section">
+      <span class="label-text">Contributors <button type="button" class="info-icon" data-tooltip="Optional list of additional contributors (first and last name)." aria-label="More info about Contributors">i</button></span>
+      <div class="contributors-controls">
+        <button type="button" id="standards-contributor-add" class="btn-like btn-add">+</button>
+        <button type="button" id="standards-contributor-remove" class="btn-like btn-submit">-</button>
+      </div>
+      <div id="standards-contributor-rows"></div>
+    </div>
+  </div>
+
+  <div class="doi-fields" data-doi-type="conference" hidden>
+    <h3 class="span-2">Conference</h3>
+    <label><span class="label-text">DOI <button type="button" class="info-icon" data-tooltip="Digital Object Identifier to register for this conference proceedings entry." aria-label="More info about DOI">i</button></span> <input type="text" name="doi" data-sample="10.5281/example.conf" disabled /></label>
+    <label><span class="label-text">Resource URL <button type="button" class="info-icon" data-tooltip="Public URL where the proceedings can be accessed." aria-label="More info about Resource URL">i</button></span> <input type="url" name="resource_url" data-sample="https://example.org/proceedings" disabled /></label>
+    <label><span class="label-text">Given Name <button type="button" class="info-icon" data-tooltip="Given (first) name of the author or editor." aria-label="More info about Given Name">i</button></span> <input type="text" name="given_name" data-sample="Jane" disabled /></label>
+    <label><span class="label-text">Surname <button type="button" class="info-icon" data-tooltip="Surname (last name) of the author or editor." aria-label="More info about Surname">i</button></span> <input type="text" name="surname" data-sample="Doe" disabled /></label>
+    <label><span class="label-text">Conference Name <button type="button" class="info-icon" data-tooltip="Full name of the conference." aria-label="More info about Conference Name">i</button></span> <input type="text" name="conference_name" data-sample="Sample Conference on Genomics" disabled /></label>
+    <label><span class="label-text">Conference Theme <button type="button" class="info-icon" data-tooltip="Theme or topic of the conference." aria-label="More info about Conference Theme">i</button></span> <input type="text" name="conference_theme" data-sample="Genomic Data Standards" disabled /></label>
+    <label><span class="label-text">Conference Acronym <button type="button" class="info-icon" data-tooltip="Acronym used to refer to the conference." aria-label="More info about Conference Acronym">i</button></span> <input type="text" name="conference_acronym" data-sample="SCG" disabled /></label>
+    <label><span class="label-text">Conference Sponsor <button type="button" class="info-icon" data-tooltip="Organization sponsoring the conference." aria-label="More info about Conference Sponsor">i</button></span> <input type="text" name="conference_sponsor" data-sample="GA4GH" disabled /></label>
+    <label><span class="label-text">Conference Number <button type="button" class="info-icon" data-tooltip="Sequential number of this conference, e.g. 1st, 2nd." aria-label="More info about Conference Number">i</button></span> <input type="number" name="conference_number" data-sample="1" disabled /></label>
+    <label><span class="label-text">Conference Location <button type="button" class="info-icon" data-tooltip="City and country where the conference was held." aria-label="More info about Conference Location">i</button></span> <input type="text" name="conference_location" data-sample="Geneva, Switzerland" disabled /></label>
+    <label><span class="label-text">Conference Start Date <button type="button" class="info-icon" data-tooltip="Date the conference started." aria-label="More info about Conference Start Date">i</button></span> <input type="datetime-local" name="conference_start_date" data-sample="2024-01-01T00:00" disabled /></label>
+    <label><span class="label-text">Conference End Date <button type="button" class="info-icon" data-tooltip="Date the conference ended." aria-label="More info about Conference End Date">i</button></span> <input type="datetime-local" name="conference_end_date" data-sample="2024-01-03T00:00" disabled /></label>
+    <label><span class="label-text">Proceedings Title <button type="button" class="info-icon" data-tooltip="Title of the published proceedings." aria-label="More info about Proceedings Title">i</button></span> <input type="text" name="proceedings_title" data-sample="Proceedings of the Sample Conference" disabled /></label>
+    <label><span class="label-text">Proceedings Subject <button type="button" class="info-icon" data-tooltip="Subject area covered by the proceedings." aria-label="More info about Proceedings Subject">i</button></span> <input type="text" name="proceedings_subject" data-sample="Genomics" disabled /></label>
+    <label><span class="label-text">Publisher Name <button type="button" class="info-icon" data-tooltip="Name of the entity publishing the proceedings." aria-label="More info about Publisher Name">i</button></span> <input type="text" name="publisher_name" data-sample="GA4GH Press" disabled /></label>
+    <label><span class="label-text">Publisher Place <button type="button" class="info-icon" data-tooltip="City and country of the publisher." aria-label="More info about Publisher Place">i</button></span> <input type="text" name="publisher_place" data-sample="Geneva, Switzerland" disabled /></label>
+    <label><span class="label-text">Publication Year <button type="button" class="info-icon" data-tooltip="Year the proceedings were published." aria-label="More info about Publication Year">i</button></span> <input type="number" name="publication_year" data-sample="2024" disabled /></label>
+    <label><span class="label-text">ISBN <button type="button" class="info-icon" data-tooltip="International Standard Book Number for the proceedings." aria-label="More info about ISBN">i</button></span> <input type="text" name="isbn" data-sample="978-3-16-148410-0" disabled /></label>
+    <label><span class="label-text">Timestamp <button type="button" class="info-icon" data-tooltip="Timestamp recorded for this record." aria-label="More info about Timestamp">i</button></span> <input type="datetime-local" name="timestamp" data-sample="2024-01-01T00:00" disabled /></label>
+    <label><span class="label-text">Resource <button type="button" class="info-icon" data-tooltip="URL or identifier of the related resource." aria-label="More info about Resource">i</button></span> <input type="text" name="resource" data-sample="https://example.org/resource" disabled /></label>
+    <label><span class="label-text">Batch ID <button type="button" class="info-icon" data-tooltip="Optional identifier grouping this submission with others." aria-label="More info about Batch ID">i</button></span> <input type="text" name="batch_id" data-sample="batch-001" disabled /></label>
+  </div>
+
+  <div class="doi-fields" data-doi-type="articles" hidden>
+    <h3 class="span-2">Article</h3>
+    <label><span class="label-text">DOI <button type="button" class="info-icon" data-tooltip="Digital Object Identifier to register for this article." aria-label="More info about DOI">i</button></span> <input type="text" name="doi" data-sample="10.5281/example.article" disabled /></label>
+    <label><span class="label-text">Full Title <button type="button" class="info-icon" data-tooltip="Full name of the journal." aria-label="More info about Full Title">i</button></span> <input type="text" name="full_title" data-sample="Sample Journal of Genomics" disabled /></label>
+    <label><span class="label-text">Abbreviated Title <button type="button" class="info-icon" data-tooltip="Abbreviated form of the journal title." aria-label="More info about Abbreviated Title">i</button></span> <input type="text" name="abbrev_title" data-sample="Sample J. Genom." disabled /></label>
+    <label><span class="label-text">ISSN <button type="button" class="info-icon" data-tooltip="International Standard Serial Number of the journal." aria-label="More info about ISSN">i</button></span> <input type="text" name="issn" data-sample="1234-5678" disabled /></label>
+    <label><span class="label-text">CODEN <button type="button" class="info-icon" data-tooltip="CODEN code identifying the journal." aria-label="More info about CODEN">i</button></span> <input type="text" name="coden" data-sample="SJGEAB" disabled /></label>
+    <label><span class="label-text">Publication Date <button type="button" class="info-icon" data-tooltip="Date the article was published." aria-label="More info about Publication Date">i</button></span> <input type="datetime-local" name="publication_date" data-sample="2024-01-01T00:00" disabled /></label>
+    <label><span class="label-text">Journal Volume <button type="button" class="info-icon" data-tooltip="Volume number of the journal issue." aria-label="More info about Journal Volume">i</button></span> <input type="number" name="journal_volume" data-sample="12" disabled /></label>
+    <label><span class="label-text">Journal Issue <button type="button" class="info-icon" data-tooltip="Issue number within the volume." aria-label="More info about Journal Issue">i</button></span> <input type="number" name="journal_issue" data-sample="3" disabled /></label>
+    <label><span class="label-text">Article Title <button type="button" class="info-icon" data-tooltip="Title of the individual article." aria-label="More info about Article Title">i</button></span> <input type="text" name="article_title" data-sample="Sample Article Title" disabled /></label>
+    <label class="span-2"><span class="label-text">Contributors (JSON array) <button type="button" class="info-icon" data-tooltip="JSON array of contributor objects, e.g. given and family names." aria-label="More info about Contributors">i</button></span> <textarea name="contributors" rows="3" data-sample='[{"given_name": "Jane", "surname": "Doe"}]' disabled></textarea></label>
+    <label><span class="label-text">Pages <button type="button" class="info-icon" data-tooltip="Starting page number of the article." aria-label="More info about Pages">i</button></span> <input type="number" name="pages" data-sample="100" disabled /></label>
+    <label><span class="label-text">Resource <button type="button" class="info-icon" data-tooltip="URL or identifier of the underlying resource." aria-label="More info about Resource">i</button></span> <input type="text" name="resource" data-sample="https://example.org/resource" disabled /></label>
+    <label><span class="label-text">Batch ID <button type="button" class="info-icon" data-tooltip="Optional identifier grouping this submission with others." aria-label="More info about Batch ID">i</button></span> <input type="text" name="batch_id" data-sample="batch-001" disabled /></label>
+  </div>
+
+  <div class="doi-fields" data-doi-type="grants" hidden>
+    <h3 class="span-2">Grant</h3>
+    <label><span class="label-text">DOI <button type="button" class="info-icon" data-tooltip="Digital Object Identifier to register for this grant." aria-label="More info about DOI">i</button></span> <input type="text" name="doi" data-sample="10.5281/example.grant" disabled /></label>
+    <label><span class="label-text">Project Title <button type="button" class="info-icon" data-tooltip="Title of the funded project." aria-label="More info about Project Title">i</button></span> <input type="text" name="project_title" data-sample="Sample Genomics Research Grant" disabled /></label>
+    <label class="span-2"><span class="label-text">Recipients (JSON array) <button type="button" class="info-icon" data-tooltip="JSON array of grant recipients." aria-label="More info about Recipients">i</button></span> <textarea name="recipients" rows="3" data-sample='[{"given_name": "Jane", "surname": "Doe"}]' disabled></textarea></label>
+    <label class="span-2"><span class="label-text">Description <button type="button" class="info-icon" data-tooltip="Short description of the funded project." aria-label="More info about Description">i</button></span> <textarea name="description" rows="3" data-sample="Brief description of the project goals." disabled></textarea></label>
+    <label class="span-2"><span class="label-text">Statement <button type="button" class="info-icon" data-tooltip="Formal statement associated with the grant." aria-label="More info about Statement">i</button></span> <textarea name="statement" rows="3" data-sample="Statement describing the purpose of this grant." disabled></textarea></label>
+    <label><span class="label-text">Identifier <button type="button" class="info-icon" data-tooltip="Unique identifier for this grant." aria-label="More info about Identifier">i</button></span> <input type="text" name="identifier" data-sample="GRANT-0001" disabled /></label>
+    <label><span class="label-text">Award Amount <button type="button" class="info-icon" data-tooltip="Monetary amount awarded." aria-label="More info about Award Amount">i</button></span> <input type="number" step="0.01" name="award_amount" data-sample="10000.00" disabled /></label>
+    <label><span class="label-text">Award Number <button type="button" class="info-icon" data-tooltip="Number identifying this award." aria-label="More info about Award Number">i</button></span> <input type="number" step="0.01" name="award_number" data-sample="1" disabled /></label>
+    <label><span class="label-text">Funding Amount <button type="button" class="info-icon" data-tooltip="Total funding amount provided." aria-label="More info about Funding Amount">i</button></span> <input type="number" step="0.01" name="funding_amount" data-sample="10000.00" disabled /></label>
+    <label><span class="label-text">Funder Name <button type="button" class="info-icon" data-tooltip="Name of the organization providing funding." aria-label="More info about Funder Name">i</button></span> <input type="text" name="funder_name" data-sample="Sample Funding Agency" disabled /></label>
+    <label><span class="label-text">Funder ID <button type="button" class="info-icon" data-tooltip="Identifier of the funder, e.g. a Crossref Funder ID." aria-label="More info about Funder ID">i</button></span> <input type="text" name="funder_id" data-sample="https://doi.org/10.13039/example" disabled /></label>
+    <label><span class="label-text">Funding Scheme <button type="button" class="info-icon" data-tooltip="Name of the funding program or scheme." aria-label="More info about Funding Scheme">i</button></span> <input type="text" name="funding_scheme" data-sample="Research Grant" disabled /></label>
+    <label><span class="label-text">Start Date <button type="button" class="info-icon" data-tooltip="Start date of the grant period." aria-label="More info about Start Date">i</button></span> <input type="datetime-local" name="start_date" data-sample="2024-01-01T00:00" disabled /></label>
+    <label><span class="label-text">End Date <button type="button" class="info-icon" data-tooltip="End date of the grant period." aria-label="More info about End Date">i</button></span> <input type="datetime-local" name="end_date" data-sample="2025-01-01T00:00" disabled /></label>
+    <label><span class="label-text">Resource <button type="button" class="info-icon" data-tooltip="URL or identifier of the related resource." aria-label="More info about Resource">i</button></span> <input type="text" name="resource" data-sample="https://example.org/resource" disabled /></label>
+    <label><span class="label-text">Batch ID <button type="button" class="info-icon" data-tooltip="Optional identifier grouping this submission with others." aria-label="More info about Batch ID">i</button></span> <input type="text" name="batch_id" data-sample="batch-001" disabled /></label>
+  </div>
+
+  <div class="doi-fields" data-doi-type="posted-content" hidden>
+    <h3 class="span-2">Posted Content</h3>
+    <label><span class="label-text">DOI <button type="button" class="info-icon" data-tooltip="Digital Object Identifier to register for this posted content." aria-label="More info about DOI">i</button></span> <input type="text" name="doi" data-sample="10.5281/example.posted" disabled /></label>
+    <label><span class="label-text">Group Title <button type="button" class="info-icon" data-tooltip="Title of the group or series this content belongs to." aria-label="More info about Group Title">i</button></span> <input type="text" name="group_title" data-sample="Sample Preprint Group" disabled /></label>
+    <label class="span-2"><span class="label-text">Contributors (JSON array) <button type="button" class="info-icon" data-tooltip="JSON array of contributor objects, e.g. given and family names." aria-label="More info about Contributors">i</button></span> <textarea name="contributors" rows="3" data-sample='[{"given_name": "Jane", "surname": "Doe"}]' disabled></textarea></label>
+    <label><span class="label-text">Title <button type="button" class="info-icon" data-tooltip="Title of the posted content." aria-label="More info about Title">i</button></span> <input type="text" name="title" data-sample="Sample Preprint Title" disabled /></label>
+    <label><span class="label-text">Posted Date <button type="button" class="info-icon" data-tooltip="Date the content was first posted." aria-label="More info about Posted Date">i</button></span> <input type="datetime-local" name="posted_date" data-sample="2024-01-01T00:00" disabled /></label>
+    <label><span class="label-text">Acceptance Date <button type="button" class="info-icon" data-tooltip="Date the content was accepted, if applicable." aria-label="More info about Acceptance Date">i</button></span> <input type="datetime-local" name="acceptance_date" data-sample="2024-01-15T00:00" disabled /></label>
+    <label><span class="label-text">Institution <button type="button" class="info-icon" data-tooltip="Institution affiliated with this content." aria-label="More info about Institution">i</button></span> <input type="text" name="institution" data-sample="Sample University" disabled /></label>
+    <label class="span-2"><span class="label-text">Funders (JSON array) <button type="button" class="info-icon" data-tooltip="JSON array of funding organizations." aria-label="More info about Funders">i</button></span> <textarea name="funders" rows="3" data-sample='[{"name": "Sample Funder"}]' disabled></textarea></label>
+    <label><span class="label-text">Program <button type="button" class="info-icon" data-tooltip="Name of the program under which this was posted." aria-label="More info about Program">i</button></span> <input type="text" name="program" data-sample="Open Science Program" disabled /></label>
+    <label><span class="label-text">Resource <button type="button" class="info-icon" data-tooltip="URL or identifier of the related resource." aria-label="More info about Resource">i</button></span> <input type="text" name="resource" data-sample="https://example.org/resource" disabled /></label>
+    <label class="span-2"><span class="label-text">Citations (JSON array) <button type="button" class="info-icon" data-tooltip="JSON array of citation records." aria-label="More info about Citations">i</button></span> <textarea name="citations" rows="3" data-sample='[{"doi": "10.5281/example.cited"}]' disabled></textarea></label>
+    <label><span class="label-text">Batch ID <button type="button" class="info-icon" data-tooltip="Optional identifier grouping this submission with others." aria-label="More info about Batch ID">i</button></span> <input type="text" name="batch_id" data-sample="batch-001" disabled /></label>
+  </div>
+
+  <div class="doi-fields" data-doi-type="reports" hidden>
+    <h3 class="span-2">Report / Working Paper</h3>
+    <label><span class="label-text">DOI <button type="button" class="info-icon" data-tooltip="Digital Object Identifier to register for this report." aria-label="More info about DOI">i</button></span> <input type="text" name="doi" data-sample="10.5281/example.report" disabled /></label>
+    <label class="span-2"><span class="label-text">Contributors (JSON array) <button type="button" class="info-icon" data-tooltip="JSON array of contributor objects, e.g. given and family names." aria-label="More info about Contributors">i</button></span> <textarea name="contributors" rows="3" data-sample='[{"given_name": "Jane", "surname": "Doe"}]' disabled></textarea></label>
+    <label><span class="label-text">Title <button type="button" class="info-icon" data-tooltip="Title of the report or working paper." aria-label="More info about Title">i</button></span> <input type="text" name="title" data-sample="Sample Report Title" disabled /></label>
+    <label><span class="label-text">Edition Number <button type="button" class="info-icon" data-tooltip="Edition number of the report." aria-label="More info about Edition Number">i</button></span> <input type="text" name="edition_number" data-sample="1" disabled /></label>
+    <label><span class="label-text">Publication Date <button type="button" class="info-icon" data-tooltip="Date the report was published." aria-label="More info about Publication Date">i</button></span> <input type="datetime-local" name="publication_date" data-sample="2024-01-01T00:00" disabled /></label>
+    <label><span class="label-text">Publisher Name <button type="button" class="info-icon" data-tooltip="Name of the publishing organization." aria-label="More info about Publisher Name">i</button></span> <input type="text" name="publisher_name" data-sample="Sample Publisher" disabled /></label>
+    <label><span class="label-text">Publisher Place <button type="button" class="info-icon" data-tooltip="City and country of the publisher." aria-label="More info about Publisher Place">i</button></span> <input type="text" name="publisher_place" data-sample="Geneva, Switzerland" disabled /></label>
+    <label class="span-2"><span class="label-text">Institution (JSON array) <button type="button" class="info-icon" data-tooltip="JSON array of associated institutions." aria-label="More info about Institution">i</button></span> <textarea name="institution" rows="3" data-sample='[{"name": "Sample Institution"}]' disabled></textarea></label>
+    <label><span class="label-text">Report Number <button type="button" class="info-icon" data-tooltip="Identifying number of the report." aria-label="More info about Report Number">i</button></span> <input type="text" name="report_number" data-sample="R-001" disabled /></label>
+    <label><span class="label-text">Contract Number <button type="button" class="info-icon" data-tooltip="Contract number associated with the report." aria-label="More info about Contract Number">i</button></span> <input type="text" name="contract_number" data-sample="C-001" disabled /></label>
+    <label><span class="label-text">Resource <button type="button" class="info-icon" data-tooltip="URL or identifier of the related resource." aria-label="More info about Resource">i</button></span> <input type="text" name="resource" data-sample="https://example.org/resource" disabled /></label>
+    <label><span class="label-text">Batch ID <button type="button" class="info-icon" data-tooltip="Optional identifier grouping this submission with others." aria-label="More info about Batch ID">i</button></span> <input type="text" name="batch_id" data-sample="batch-001" disabled /></label>
+  </div>
+
+  <button type="add">Add</button>
+  <button type="submit">Submit</button>
+  <span id="standards-submit-spinner" class="spinner" hidden aria-live="polite">Submitting…</span>
+</form>
+
+<section id="standards-queue-section">
+  <h3>Queue</h3>  
+  <div class="table-wrap">
+    <table id="standards-queue-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Resource URL</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <br />
+  <div class="queue-actions">
+    <a href="/standards/template" download class="btn-like btn-add">Download CSV</a>
+    <button type="button" id="standards-upload-btn" class="btn-like btn-submit">Upload CSV</button>
+    <input type="file" id="standards-upload-input" accept=".csv" hidden />
+  </div>
+</section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/register-standards.js"></script>
+<script src="/assets/form.js"></script>
+<script src="/assets/register.js"></script>
+{% endblock %}

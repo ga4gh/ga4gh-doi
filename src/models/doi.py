@@ -69,7 +69,9 @@ class Standard(Base):
     standards_body_name: Mapped[Optional[str]] = mapped_column(Text)
     organization: Mapped[Optional[str]] = mapped_column(Text)
     title: Mapped[Optional[str]] = mapped_column(Text)
-    resource_link: Mapped[Optional[str]] = mapped_column(Text)
+    abstract_title: Mapped[Optional[str]] = mapped_column(Text)
+    abstract: Mapped[Optional[str]] = mapped_column(Text)
+    authors: Mapped[Optional[str]] = mapped_column(Text)  # human-readable, comma-separated full names
     email_address: Mapped[Optional[str]] = mapped_column(Text)
     batch_id: Mapped[Optional[uuid.UUID]] = mapped_column(UUID(as_uuid=True))
     submitted_at: Mapped[Optional[datetime]] = mapped_column(DateTime)
@@ -94,9 +96,34 @@ class StandardRequest(BaseModel):
     standards_body_name: str
     organization: str
     title: str
-    resource_link: str
     email_address: str
     batch_id: Optional[uuid.UUID] = None
+
+
+class StandardRowInput(BaseModel):
+    title: str
+    abstract_title: str = ""
+    abstract: str = ""
+    contributors: List[dict] = []
+    resource_url: str
+    publish_date: str
+    item_number: str = ""
+    publisher_place: str
+    std_designator: str
+    standards_body_acronym: str
+    depositor_name: str = ""
+    registrant: str
+    publisher_name: str
+    standards_body_name: str
+    organization: str
+    email_address: str
+
+
+class StandardsSubmitRequest(BaseModel):
+    standards: List[StandardRowInput] = []
+    csv_text: Optional[str] = None
+    deposited_by: str
+    depositor_email: str
 
 
 class Conference(Base):

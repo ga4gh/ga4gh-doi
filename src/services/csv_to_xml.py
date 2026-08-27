@@ -1,14 +1,20 @@
+import io
+import json
 import uuid
 import pandas as pd
+from src.services.csv_functions import read_optional_cell
+from src.services.designator_generator import generateDesignator
 from src.services.suffix_generator import generateSuffix
 from src.services.create_records import CreateRecords
 from datetime import datetime
 
-def CSVtoXML(inputfile,outputfile):
-    if not inputfile.lower().endswith('.csv'):
+def CSVtoXML(inputfile,outputfile=None):
+    # inputfile: a ".csv" path, or a file-like object (e.g. io.StringIO) holding CSV text.
+    if isinstance(inputfile, str) and not inputfile.lower().endswith('.csv'):
         print('Expected A CSV File')
         return 0
-    if not outputfile.lower().endswith('.xml'):
+    # outputfile: optional ".xml" path to also write the result to disk.
+    if outputfile is not None and not outputfile.lower().endswith('.xml'):
         print('Expected a XML file')
         return 0
 
@@ -18,12 +24,6 @@ def CSVtoXML(inputfile,outputfile):
         print('CSV file not found')
         return 0
 
-    df.columns = df.iloc[0]
-
-    # Check if first header contains <>
-    if "<" not in str(df.columns[0]) and ">" not in str(df.columns[0]):
-        df = df[1:]
-
     timestamp = datetime.now().strftime("%Y%m%d%H%M")
 
     entireop='<?xml version="1.0" encoding="UTF-8"?>\n'\
@@ -32,10 +32,10 @@ def CSVtoXML(inputfile,outputfile):
              '<doi_batch_id>' + str(timestamp) + '</doi_batch_id>\n'\
              '<timestamp>' + str(timestamp) + '</timestamp>\n'\
              '<depositor>\n'\
-             '<depositor_name>' + str(df["<depositor_name>"][1]) + '</depositor_name>\n'\
-             '<email_address>' + str(df["<email_address>"][1]) + '</email_address>\n'\
+             '<depositor_name>' + str(df["<depositor_name>"].iloc[0]) + '</depositor_name>\n'\
+             '<email_address>' + str(df["<email_address>"].iloc[0]) + '</email_address>\n'\
              '</depositor>\n'\
-             '<registrant>' + str(df["<registrant>"][1]) + '</registrant>\n'\
+             '<registrant>' + str(df["<registrant>"].iloc[0]) + '</registrant>\n'\
              '</head>\n'\
              '<body>\n'\
 
@@ -43,7 +43,7 @@ def CSVtoXML(inputfile,outputfile):
     standards = []
     batch_uuid = uuid.uuid4()
 
-    for j in range(1,len(df)):  #add suffix if no suffix also check if suffix exists
+    for j in range(len(df)):  #add suffix if no suffix also check if suffix exists
         xml_part, standard = addStandard(df, j)
         rowop += xml_part
         if standard is not None:
@@ -55,10 +55,45 @@ def CSVtoXML(inputfile,outputfile):
     batch = CreateRecords.create_batch(df, timestamp)
     batch.xml = entireop
 
-    with open(outputfile,'w') as f:
-        f.write(entireop)
+    if outputfile is not None:
+        with open(outputfile,'w') as f:
+            f.write(entireop)
 
     return entireop, batch, standards
+
+
+def _contributors_xml(df, j):
+    """Build <person_name> entries for any additional contributors beyond the organization."""
+    try:
+        contributors = json.loads(read_optional_cell(df, j, "<contributors>") or "[]")
+    except ValueError:
+        contributors = []
+
+    xml = ""
+    for contributor in contributors:
+        given_name = contributor.get("first_name", "")
+        surname = contributor.get("last_name", "")
+        if not given_name and not surname:
+            continue
+        xml += '<person_name sequence="additional" contributor_role="author">\n'\
+               '<given_name>' + str(given_name) + '</given_name>\n'\
+               '<surname>' + str(surname) + '</surname>\n'\
+               '</person_name>\n'
+    return xml
+
+
+def _abstract_xml(df, j):
+    """Build the optional JATS <abstract> block, or "" if no abstract text was given."""
+    abstract_text = read_optional_cell(df, j, "<abstract>")
+    if not abstract_text:
+        return ""
+
+    abstract_title = read_optional_cell(df, j, "<abstract_title>")
+    title_xml = ('<title>' + abstract_title + '</title>\n') if abstract_title else ""
+    return '<abstract xmlns="http://www.ncbi.nlm.nih.gov/JATS1">\n'\
+           + title_xml +\
+           '<p>' + abstract_text + '</p>\n'\
+           '</abstract>\n'
 
 
 def addStandard(df, j):
@@ -82,18 +117,21 @@ def addStandard(df, j):
     publish_date = datetime(int(df["<year>"][j]), int(df["<month>"][j]), int(df["<day>"][j]))
 
     standard = CreateRecords.create_standard(df, j, doi_value, publish_date)
-    standard.std_designator = str(df["<standards_body_acronym>"][j]) + " " + df['<doi>'][j]
+    std_designator = generateDesignator(str(df["<standards_body_acronym>"][j]), df['<doi>'][j])
+    standard.std_designator = std_designator
     xml = '<standard>\n'\
           '<standard_metadata language="en">\n'\
           '<contributors>\n'\
           '<organization sequence="first" contributor_role="author">' + str(df["<organization>"][j]) + '</organization>\n'\
+          + _contributors_xml(df, j) +\
           '</contributors>\n'\
           '<titles>\n'\
           '<title>'+ str(df["<title>"][j]).replace("&", "&amp;") +'</title>\n'\
           '</titles>\n'\
+          + _abstract_xml(df, j) +\
           '<designators>\n'\
           '<std_as_published undated="'+ str(df["<std_designator>"][j]) +'">\n'\
-          '<std_designator>'+ str(df["<standards_body_acronym>"][j]) + " " + df['<doi>'][j] +'</std_designator>\n'\
+          '<std_designator>'+ std_designator +'</std_designator>\n'\
           '</std_as_published>\n'\
           '</designators>\n'\
           '<approval_date>\n'\
@@ -117,3 +155,19 @@ def addStandard(df, j):
           '</standard>\n'
 
     return xml, standard
+
+
+def convert_csv_text_to_xml(csv_text):
+    """Convert a CSV string to XML.
+
+    Returns the (xml, batch, standards) tuple from CSVtoXML, or 0 on failure.
+    """
+    return CSVtoXML(io.StringIO(csv_text))
+
+
+def csv_text_to_standards(csv_text):
+    result = convert_csv_text_to_xml(csv_text)
+    if result == 0:
+        return []
+    _, _, standards = result
+    return standards
