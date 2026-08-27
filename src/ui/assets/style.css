@@ -1,64 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&family=Figtree:wght@300;400;600;700&family=Space+Grotesk:wght@400;700&display=swap');
+
+/* new_ga4gh's own icon font, base/_fonts.scss's FontAwesomeSolid @font-face
+   (Font Awesome Free's fa-solid-900.woff2) — bundled locally rather than
+   pulled from a CDN, matching analytics-dashboard-ui's assets/fonts. */
+@font-face {
+  font-family: "FontAwesomeSolid";
+  src: url("/assets/fonts/fa-solid-900.woff2") format("woff2");
+}
+
+:root {
+  --darkblue: #1b75bb;   /* Denim */
+  --lightgrey: #efefef;
+  --grey: #767676;
+  --white: #ffffff;
+  --dark: #363636;
+  --black: #000000;
+
+  --font-ws-bold: "WorkSans-Bold", "Work Sans", sans-serif;
+  --font-fi-regular: "Figtree-Regular", "Figtree", sans-serif;
+  --font-fi-semibold: "Figtree-SemiBold", "Figtree", sans-serif;
+  --font-sg-bold: "SpaceGrotesk-Bold", "Space Grotesk", sans-serif;
+
+  /* new_ga4gh base/_typography.scss's fluid type scale */
+  --text-xs: clamp(0.65rem, 0.75vw, 0.9rem);
+  --text-sm: clamp(0.85rem, 0.9vw, 1.1rem);
+  --text-base: clamp(0.95rem, 1.15vw, 1.25rem);
+  --text-md: clamp(1.05rem, 1.2vw, 1.3rem);
+  --text-lg: clamp(1.1rem, 1.3vw, 1.4rem);
+  --text-xl: clamp(1.25rem, 1.5vw, 1.6rem);
+  --text-2xl: clamp(1.5rem, 1.9vw, 2rem);
+  --text-3xl: clamp(1.75rem, 2.4vw, 2.5rem);
+  --text-4xl: clamp(2rem, 3vw, 3.5rem);
+
+  /* Button label size — reads comfortably on small/medium screens but,
+     unlike --text-base, caps lower on large viewports instead of
+     continuing to grow toward 1.25rem. */
+  --text-btn: clamp(0.8rem, 0.85vw, 1rem);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Arial, sans-serif;
-  color: #1a1a1a;
-  background: #fafafa;
+  font-family: var(--font-fi-regular);
+  font-size: var(--text-base);
+  color: var(--dark);
+  background: var(--white);
+  padding-top: 4.25rem; /* clear the fixed .top-bar */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-header {
+/* new_ga4gh base/_typography.scss's heading scale: h1-h5 are Work Sans Bold
+   at the --text-4xl..--text-lg steps; h6 is deliberately left unstyled
+   there too, inheriting the body's Figtree Regular / --text-base. */
+h1 { font-family: var(--font-ws-bold); font-weight: 700; font-size: var(--text-4xl); }
+h2 { font-family: var(--font-ws-bold); font-weight: 700; font-size: var(--text-3xl); }
+h3 { font-family: var(--font-ws-bold); font-weight: 700; font-size: var(--text-2xl); }
+h4 { font-family: var(--font-ws-bold); font-weight: 700; font-size: var(--text-xl); }
+h5 { font-family: var(--font-ws-bold); font-weight: 700; font-size: var(--text-lg); }
+
+/* ---------- TOP BAR ---------- */
+/* Styled to match analytics-dashboard-ui / refcloud-ui's shared GA4GH navbar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--white);
+  padding: 0.5rem 2rem;
+  box-shadow: 0 12px 10px -12px #262626;
+  border-bottom: 2px solid var(--black);
+}
+
+/* Matches new_ga4gh's layout/_page.scss `header` (site-wrapper mixin):
+   content is centered and capped at $max-site-width (1440px) on wide
+   viewports, with .top-bar's own padding providing the minimum gutter. */
+.top-bar-row {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: #ffffff;
-  border-bottom: 1px solid #ddd;
-  padding: 0.75rem 1.5rem;
+  max-width: 1440px;
+  margin-inline: auto;
 }
 
-.logo {
-  height: 2rem;
-  width: auto;
+.logo-col {
+  margin-right: 1.5rem;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 1.4rem;
+.brand-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.brand-logo-img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.brand-text-primary,
+.brand-text-base {
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
   white-space: nowrap;
 }
 
-.tabs {
+.brand-text-primary { color: var(--darkblue); }
+.brand-text-base { color: var(--dark); }
+
+.menu-col {
+  flex: 1 1 auto;
   display: flex;
+  justify-content: flex-end;
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+  column-gap: 1.25rem;
   flex-wrap: wrap;
-  gap: 0.25rem;
-  margin-left: auto;
+  justify-content: flex-end;
+  transition: all 0.3s ease;
 }
 
-.tab-link {
-  display: inline-block;
-  padding: 0.6rem 1rem;
-  font-size: 0.95rem;
+/* Between the mobile dropdown breakpoint and the width where every tab
+   fits on one line, the wrapped nav links read better centered than
+   pinned to the right edge on their own — narrower, still non-touch. */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .menu-col {
+    justify-content: center;
+  }
+
+  .menu-container {
+    justify-content: center;
+  }
+}
+
+.menu-link {
+  color: var(--dark);
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
+  font-size: clamp(0.7rem, 0.75vw, 0.95rem);
+  text-transform: uppercase;
   text-decoration: none;
-  border-bottom: 3px solid transparent;
-  color: #444;
+  transition: color 0.3s ease;
 }
 
-.tab-link:hover {
-  color: #000;
+.menu-link:hover,
+.menu-link:focus-visible {
+  color: var(--darkblue);
 }
 
-.tab-link.active {
-  color: #000;
-  border-bottom-color: #2563eb;
-  font-weight: 600;
+.menu-link.active {
+  color: var(--darkblue);
+}
+
+/* Mobile hamburger toggle */
+.mobile-menu-toggle-col {
+  display: none;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mob-menu-trigger-wrapper {
+  display: block;
+  position: relative;
+  width: 2rem;
+  height: 2px;
+}
+
+.mob-menu-trigger-wrapper::before,
+.mob-menu-trigger-wrapper::after,
+#mob-menu-trigger {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 2rem;
+  height: 2px;
+  background-color: var(--dark);
+  border-radius: 1rem;
+  transition: all 300ms ease;
+}
+
+.mob-menu-trigger-wrapper::before {
+  content: "";
+  top: -0.5rem;
+}
+
+.mob-menu-trigger-wrapper::after {
+  content: "";
+  top: 0.5rem;
+}
+
+#mob-menu-trigger {
+  top: 0;
+}
+
+.mobile-menu-toggle-col:hover .mob-menu-trigger-wrapper::before,
+.mobile-menu-toggle-col:hover .mob-menu-trigger-wrapper::after,
+.mobile-menu-toggle-col:hover #mob-menu-trigger {
+  background-color: var(--darkblue);
+}
+
+body.mobile-nav-open .mobile-menu-toggle-col .mob-menu-trigger-wrapper::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+body.mobile-nav-open .mobile-menu-toggle-col .mob-menu-trigger-wrapper::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+
+body.mobile-nav-open .mobile-menu-toggle-col #mob-menu-trigger {
+  transform: scaleX(0);
+}
+
+@media (pointer: coarse), (max-width: 768px) {
+  .top-bar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .top-bar-row {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .mobile-menu-toggle-col {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .logo-col {
+    min-width: 0;
+    margin-right: 0.5rem;
+  }
+
+  .brand-lockup {
+    gap: 0.5rem;
+    font-size: clamp(0.65rem, 4.4vw, 1.5rem);
+    min-width: 0;
+  }
+
+  .menu-col {
+    flex: 0 0 0;
+    width: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .menu-container {
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--white);
+    transition: max-height 0.3s ease;
+  }
+
+  body.mobile-nav-open .menu-container {
+    max-height: 80vh;
+    padding: 1rem;
+    border-bottom: 2px solid var(--black);
+  }
+
+  .menu-link {
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--lightgrey);
+  }
 }
 
 main {
-  max-width: 840px;
+  flex: 1 0 auto;
+  max-width: 1440px; /* matches the navbar/footer's $max-site-width */
+  width: 100%;
   margin: 2rem auto;
   padding: 0 1.5rem;
+}
+
+/* Table pages stretch wider than the site's standard content width so
+   their (often many-column) tables have room before needing to scroll. */
+main:has(.table-page) {
+  max-width: 90%;
+}
+
+/* ---------- FOOTER ---------- */
+/* Matches refcloud-ui's components/layout/Footer.tsx + styles/globals.css,
+   also used as-is by analytics-dashboard-ui's footer_layout.py. */
+.footer {
+  flex: 0 0 auto;
+  background-color: var(--dark);
+  color: var(--white);
+  padding: 2.5rem;
+}
+
+.ga4gh-footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.f-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+}
+
+.f-logo-img {
+  width: 4rem;
+  height: auto;
+}
+
+.f-logo-text {
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 133%;
+}
+
+.f-logo p {
+  max-width: 32rem;
+  margin: 0;
+}
+
+.f-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Desktop's .f-logo block (logo, name, copyright) is left-aligned, sitting
+   opposite the already-centered .f-social block — on any narrower/responsive
+   viewport, force a single stacked column (rather than relying on flex-wrap,
+   which only kicks in once the two blocks stop fitting side by side) so the
+   footer always reads as one consistent centered block. */
+@media (pointer: coarse), (max-width: 768px) {
+  .ga4gh-footer-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .f-logo {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* GA4GH footer social buttons (new_ga4gh components/_buttons.scss .btn-light) */
+.ga4gh-btn-light {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: clamp(2.5rem, 10vw, 3rem);
+  aspect-ratio: 270 / 60;
+  padding-inline: clamp(1rem, 2cqw, 2rem);
+  padding-block: 0;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.46);
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ga4gh-btn-light::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(100% - 2px);
+  width: 100%;
+  height: 2px;
+  background-color: var(--white);
+  transition: all 0.3s ease;
+}
+
+.ga4gh-btn-light:hover::after,
+.ga4gh-btn-light:focus-visible::after {
+  top: 0;
+  height: 100%;
+}
+
+.ga4gh-btn-light:hover,
+.ga4gh-btn-light:focus-visible {
+  color: var(--dark);
+}
+
+.ga4gh-btn-light .btn-text {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
+  font-size: var(--text-btn);
+  text-transform: uppercase;
+}
+
+/* Matches new_ga4gh's components/_buttons.scss `btn-icon($font, $glyph)`
+   mixin: the glyph sits on .btn-text::before via the bundled icon font. */
+.btn-icon-globe.btn-text::before {
+  font-family: "FontAwesomeSolid";
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  margin-right: 0.5rem;
+  content: "\f0ac";
 }
 
 .register-layout {
@@ -79,12 +466,17 @@ main {
 #standards-queue-section h3 {
   margin: 0 0 0.5rem;
   font-size: 1.05rem;
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
 }
 
+/* Column (not row) so each button keeps its full aspect-ratio-driven
+   width instead of being flex-shrunk to fit a narrow row. */
 .queue-actions {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
   margin-bottom: 0.5rem;
 }
 
@@ -97,11 +489,6 @@ main {
 .contributors-controls {
   display: flex;
   gap: 0.5rem;
-}
-
-.contributors-controls .btn-like {
-  padding: 0.25rem 0.75rem;
-  line-height: 1;
 }
 
 .contributor-row {
@@ -134,7 +521,6 @@ label {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  font-size: 0.9rem;
 }
 
 label:has(:required) .label-text::before {
@@ -150,6 +536,8 @@ label:has(:required) .label-text::before {
 form h3.span-2 {
   margin: 0.5rem 0 0;
   font-size: 1.05rem;
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
 }
 
 form h3.span-2:first-child {
@@ -167,27 +555,94 @@ form h3.span-2:first-child {
   display: none;
 }
 
-select {
-  padding: 0.5rem;
-  font-size: 1rem;
-  font-family: inherit;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #1a1a1a;
-  background: #fff;
+/* Registrant fields, DOI type fields, and the queue section all stack into
+   a single column on narrow/touch viewports instead of the desktop's
+   2-column form grid + side-by-side form/queue layout. */
+@media (pointer: coarse), (max-width: 768px) {
+  .register-layout {
+    flex-direction: column;
+  }
+
+  .register-layout form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .register-layout #standards-queue-section {
+    width: 100%;
+    min-width: 0;
+  }
+
+  form,
+  .doi-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Matches new_ga4gh's components/_list-filters.scss .list-filter (extends
+   .label) — the underline-only search box / dropdown used by every
+   filterable list on the reference site and by analytics-dashboard-ui's
+   Tables section search boxes and year dropdown. */
+select,
+input {
+  width: 100%;
+  font-family: var(--font-sg-bold);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  line-height: 1.41;
+  border: none;
+  border-bottom: 2px solid var(--lightgrey);
+  border-radius: 0;
+  height: clamp(40px, 10vw, 50px);
+  padding: 0.5rem 1rem;
+  background: var(--white);
+  color: var(--dark);
+  box-shadow: none;
+  outline: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+select:hover,
+select:focus,
+input:hover,
+input:focus {
+  cursor: pointer;
+  color: var(--dark);
+  background-color: var(--lightgrey);
+  border-bottom-color: var(--dark);
+  outline: none;
+}
+
+input[type="text"]::placeholder,
+input[type="search"]::placeholder {
+  color: var(--grey);
+  opacity: 1;
+}
+
+/* Textareas hold free-form multi-line/JSON text, so they keep the plain
+   boxed treatment (matches refcloud-ui's .ga4gh-input) rather than the
+   uppercase, fixed-height .list-filter style above. */
+textarea {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-fi-regular);
+  font-size: var(--text-base);
+  color: var(--dark);
+  background: var(--white);
+  border: 1.5px solid #dcdcdc;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+textarea:focus {
+  border-color: var(--darkblue);
 }
 
 .table-search {
   display: block;
-  width: 100%;
   max-width: 320px;
   margin-bottom: 0.75rem;
-  padding: 0.5rem;
-  font-size: 1rem;
-  font-family: inherit;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #1a1a1a;
 }
 
 .table-wrap {
@@ -197,34 +652,347 @@ select {
   border-radius: 4px;
 }
 
+/* Matches new_ga4gh's components/_tables.scss .list-table */
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
   font-size: 0.85rem;
   white-space: nowrap;
 }
 
-th,
 td {
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem;
   text-align: left;
+  vertical-align: top;
+  font-family: var(--font-fi-regular);
+  color: var(--dark);
+  border-bottom: 1px solid var(--lightgrey);
+}
+
+/* Flat lightgrey header (new_ga4gh's $lightgrey, no grey→lightgrey
+   gradient) with dark header text. */
+thead tr {
+  background: var(--grey);
 }
 
 thead th {
-  background: #f3f4f6;
+  padding: 1rem;
+  padding-right: 1.5rem;
+  text-align: left;
+  font-family: var(--font-fi-semibold);
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
   position: sticky;
   top: 0;
 }
 
-tbody tr:hover {
-  background: #f9fafb;
+thead th::after {
+  content: "\f0dc";
+  font-family: "FontAwesomeSolid";
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  font-size: 0.8em;
 }
 
+thead th.sorted-asc::after {
+  content: "\f0de";
+  opacity: 1;
+}
+
+thead th.sorted-desc::after {
+  content: "\f0dd";
+  opacity: 1;
+}
+
+/* Matches new_ga4gh's zebra striping (components/list-zebra-stripe.js's
+   .zebra-odd/.zebra-even, applied here via nth-child since every rendered
+   row is always the current visible page — no filtered-out rows sitting
+   hidden in the DOM to throw off :nth-child's count). */
+tbody tr:nth-child(odd) {
+  background: var(--white);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--lightgrey);
+}
+
+/* Row hover feedback only makes sense on the desktop table — the
+   responsive card list keeps its plain zebra colors on touch/narrow
+   viewports instead. */
+@media (pointer: fine) and (min-width: 769px) {
+  tbody tr:hover {
+    background: #e0e0e0;
+  }
+}
+
+/* Matches new_ga4gh's components/_list-filters.scss .pagination */
+/* Matches refcloud-ui's DrsManifestTable.tsx "Results per page" button
+   group — placed above the table, right-aligned opposite the search box.
+   Pagination itself stays a separate, centered row below the table. */
+.table-controls-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.table-controls-top .table-search {
+  margin-bottom: 0;
+}
+
+.page-size-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.page-size-label {
+  font-family: var(--font-fi-semibold);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--dark);
+}
+
+/* Matches DaisyUI's actual compiled .btn.btn-sm.btn-outline (refcloud-ui's
+   node_modules/daisyui/dist/styled.css + full.css) under its "ga4gh" theme
+   (tailwind.config.js): height 2rem, 0.2rem radius (theme's --rounded-btn,
+   inherited from the nord base theme), 1px border in the text color
+   (btn-outline's border is literally currentColor, not a fixed grey), and
+   a full invert to dark-fill/white-text on hover — not just a light tint. */
+.page-size-btn {
+  height: 2rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--dark);
+  border-radius: 0.2rem;
+  background: transparent;
+  color: var(--dark);
+  font-family: var(--font-fi-regular);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.page-size-btn:hover,
+.page-size-btn.active {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: var(--white);
+}
+
+/* Rows-per-page is always 10 on responsive/touch — no control to show. */
+@media (pointer: coarse), (max-width: 768px) {
+  .page-size-group {
+    display: none;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.pagination span {
+  position: relative;
+  display: inline-block;
+  min-width: 20px;
+  margin: 0 0.5em;
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 25px;
+  color: var(--dark);
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.pagination span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 3px;
+  background-color: transparent;
+}
+
+.pagination span.active,
+.pagination span:not(.is-disabled):hover {
+  opacity: 1;
+}
+
+.pagination span.active::after {
+  background-color: var(--darkblue);
+}
+
+.pagination span.is-disabled {
+  cursor: default;
+  opacity: 0.25;
+}
+
+.pagination span.page-prev,
+.pagination span.page-next {
+  font-size: 0;
+}
+
+.pagination span.page-prev::before,
+.pagination span.page-next::before {
+  font-family: "FontAwesomeSolid";
+  font-size: 12px;
+  color: var(--darkblue);
+}
+
+.pagination span.page-prev::before {
+  content: "\f053";
+}
+
+.pagination span.page-next::before {
+  content: "\f054";
+}
+
+.pagination span.is-disabled.page-prev::before,
+.pagination span.is-disabled.page-next::before {
+  color: var(--grey);
+}
+
+/* Matches new_ga4gh's components/_tables.scss mobile fallback: each row
+   becomes a card (label above value, via the td's own data-header), rather
+   than a horizontally-scrolling table. Only the first few fields show by
+   default — .card-toggle-btn reveals the rest (.card-field-extra). Scoped
+   to table[data-api] specifically (the doi-table.js-driven data tables) —
+   the register page's plain Queue table has no data-api and no per-field
+   data-header labels, so it keeps its normal header row instead of losing
+   it to this card treatment. */
+@media (pointer: coarse), (max-width: 768px) {
+  .table-search {
+    margin-inline: auto;
+  }
+
+  .table-wrap:has(table[data-api]) {
+    border: none;
+    overflow-x: visible;
+  }
+
+  table[data-api],
+  table[data-api] tbody,
+  table[data-api] tr,
+  table[data-api] td {
+    display: block;
+    width: 100%;
+  }
+
+  table[data-api] thead {
+    display: none;
+  }
+
+  table[data-api] tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  table[data-api] tbody tr {
+    border: 1px solid var(--grey);
+    border-radius: 1rem;
+    box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  table[data-api] td {
+    padding: 0;
+    border: 0;
+    text-align: left;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  table[data-api] td::before {
+    content: attr(data-header);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: var(--text-lg);
+    line-height: 1.33;
+    font-family: var(--font-ws-bold);
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  table[data-api] td.card-field-extra {
+    display: none;
+  }
+
+  table[data-api] tr.card-expanded td.card-field-extra {
+    display: block;
+  }
+
+  table[data-api] .card-toggle-cell {
+    padding: 0;
+  }
+
+  /* Matches new_ga4gh's components/_tables.scss .toggle-summary, in its
+     grey colourway (.toggle-summary-lightgrey-grey/-white/-transparent all
+     share this same grey/lightgrey treatment) — chevron behavior unchanged. */
+  .card-toggle-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border: 0;
+    border-radius: 0;
+    font-family: var(--font-fi-semibold);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    background: var(--grey);
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  .card-toggle-btn::after {
+    font-family: "FontAwesomeSolid";
+    content: "\f078";
+    display: inline-block;
+    margin-left: 0.5em;
+    transition: transform 0.3s ease;
+  }
+
+  .card-toggle-btn.active::after {
+    transform: rotateX(180deg);
+  }
+}
+
+@media (pointer: fine) and (min-width: 769px) {
+  .card-toggle-cell {
+    display: none;
+  }
+}
+
+/* Matches refcloud-ui's .ga4gh-label (pkg/ui-ga4gh/NodeInputDefault.tsx) */
 .label-text {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--dark);
 }
 
 .info-icon {
@@ -236,7 +1004,7 @@ tbody tr:hover {
   flex: none;
   border: none;
   border-radius: 50%;
-  background: #2563eb;
+  background: var(--darkblue);
   color: #fff;
   font-size: 0.68rem;
   font-style: italic;
@@ -249,7 +1017,7 @@ tbody tr:hover {
 
 .info-icon:hover,
 .info-icon:focus-visible {
-  background: #1d4ed8;
+  background: var(--dark);
 }
 
 .info-icon:hover::after,
@@ -283,59 +1051,111 @@ form > button[type="add"] {
   grid-column: 1 / -1;
 }
 
-input,
-textarea {
-  padding: 0.5rem;
-  font-size: 1rem;
-  font-family: inherit;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #1a1a1a;
-}
-
 input.is-sample,
 textarea.is-sample {
-  color: rgba(26, 26, 26, 0.45);
+  color: rgba(54, 54, 54, 0.45);
 }
 
-button[type="submit"],
-.btn-like.btn-submit {
+/* Shared GA4GH button language (new_ga4gh components/_buttons.scss's
+   .btn-dark), matching refcloud-ui's/analytics-dashboard-ui's .ga4gh-btn-dark:
+   lightgrey at rest, a dark bar sweeps up to fill on hover/focus. */
+.ga4gh-btn-dark {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
   align-self: flex-start;
-  padding: 0.5rem 1.25rem;
-  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: clamp(2.5rem, 10vw, 3rem);
+  aspect-ratio: 270 / 60;
+  padding-inline: clamp(1rem, 2cqw, 2rem);
+  padding-block: 0;
   border: none;
-  border-radius: 4px;
-  background: #2563eb;
-  color: #fff;
+  border-radius: 0;
   cursor: pointer;
-}
-
-button[type="submit"]:hover,
-.btn-like.btn-submit:hover {
-  background: #1d4ed8;
-}
-
-button[type="add"],
-.btn-like.btn-add {
-  align-self: flex-start;
-  padding: 0.5rem 1.25rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 4px;
-  background: #17ca35;
-  color: #fff;
-  cursor: pointer;
-}
-
-button[type="add"]:hover,
-.btn-like.btn-add:hover {
-  background: #139e2c;
-}
-
-.btn-like {
-  display: inline-block;
+  overflow: hidden;
+  background-color: var(--lightgrey);
+  color: var(--dark);
   text-decoration: none;
-  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.ga4gh-btn-dark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(100% - 2px);
+  width: 100%;
+  height: 2px;
+  background-color: var(--dark);
+  transition: all 0.3s ease;
+}
+
+.ga4gh-btn-dark:hover::after,
+.ga4gh-btn-dark:focus-visible::after {
+  top: 0;
+  height: 100%;
+}
+
+.ga4gh-btn-dark:hover,
+.ga4gh-btn-dark:focus-visible {
+  color: var(--white);
+}
+
+.ga4gh-btn-dark .btn-text {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-ws-bold);
+  font-weight: 700;
+  font-size: var(--text-btn);
+  text-transform: uppercase;
+}
+
+.ga4gh-btn-dark:disabled,
+.ga4gh-btn-dark.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.ga4gh-btn-dark:disabled:hover::after,
+.ga4gh-btn-dark.disabled:hover::after {
+  top: calc(100% - 2px);
+  height: 2px;
+}
+
+.ga4gh-btn-dark:disabled:hover,
+.ga4gh-btn-dark.disabled:hover {
+  color: var(--dark);
+}
+
+/* Compact variant for inline row controls (contributor +/- add/remove) —
+   same lightgrey/dark sweep treatment, without the wide fixed aspect-ratio
+   sized for standalone action buttons. */
+.contributors-controls .ga4gh-btn-dark {
+  height: auto;
+  aspect-ratio: auto;
+  padding: 0.25rem 0.75rem;
+}
+
+/* Center action buttons instead of leaving them pinned to the left edge
+   once their container spans the full stacked width. justify-self covers
+   grid contexts (form's Add/Submit); align-self overrides the flex-column
+   .queue-actions' own align-items for its button children, since a
+   child's align-self otherwise wins over the parent's setting. */
+@media (pointer: coarse), (max-width: 768px) {
+  .ga4gh-btn-dark {
+    justify-self: center;
+    align-self: center;
+  }
+
+  .queue-actions {
+    align-items: center;
+  }
+
+  .contributors-controls {
+    justify-content: center;
+  }
 }
 
 .spinner {
