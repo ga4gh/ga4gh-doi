@@ -14,14 +14,23 @@ from src.services.api_functions import (
     record_minted_doi,
     submit_batch_xml_to_crossref,
 )
-from src.services.csv_to_xml import csv_text_to_standards
+from src.services.csv_to_xml import (
+    convert_posted_content_csv_text_to_xml,
+    csv_text_to_posted_content,
+    csv_text_to_standards,
+)
 from src.services.email_service import (
     send_registration_notification,
     send_rejection_email,
     send_submission_failed_email,
     send_success_email,
 )
-from src.services.csv_functions import build_standards_csv, build_standards_template
+from src.services.csv_functions import (
+    build_posted_content_csv,
+    build_posted_content_template,
+    build_standards_csv,
+    build_standards_template,
+)
 from src.models.batch import ApproveRequest, Batch
 from src.models.doi import (
     Article,
@@ -29,6 +38,7 @@ from src.models.doi import (
     Doi,
     Grant,
     PostedContent,
+    PostedContentSubmitRequest,
     ReportWorkingPaper,
     Standard,
     StandardsSubmitRequest,
@@ -169,6 +179,151 @@ def approve_standards_batch_email(batch_id: str, approver_email: str = None):
 
 @router.get("/standards/reject/{batch_id}", response_class=HTMLResponse)
 def reject_standards_batch_email(batch_id: str):
+    with get_session() as session:
+        repo = DBFunctions(session)
+        batch = get_batch_or_404(repo, batch_id)
+
+        batch.approved = False
+        depositor_email = batch.depositor_email
+
+    try:
+        send_rejection_email(depositor_email, batch_id)
+    except Exception as exc:
+        print("Error sending rejection email:", exc)
+
+    return f"<p>Batch {batch_id} has been rejected.</p>"
+
+
+@router.post("/posted-content/upload")
+def upload_posted_content(file: UploadFile = File(...)):
+    csv_text = file.file.read().decode("utf-8")
+    _, batch, posted_content_rows = convert_csv_or_400(csv_text, converter=convert_posted_content_csv_text_to_xml)
+    batch.submitted = True
+    batch.submitted_at = datetime.now()
+
+    with get_session() as session:
+        repo = DBFunctions(session)
+        repo.insert(batch)
+        for posted_content in posted_content_rows:
+            repo.insert(posted_content)
+
+    return {"batch_id": batch.doi_batch_id, "posted_content_count": len(posted_content_rows)}
+
+
+@router.get("/posted-content/template")
+def download_posted_content_template():
+    return Response(
+        content=build_posted_content_template(),
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=posted_content_template.csv"},
+    )
+
+
+@router.post("/posted-content/submit")
+def submit_posted_content_batch(body: PostedContentSubmitRequest):
+    if not body.posted_content and not body.csv_text:
+        raise HTTPException(status_code=400, detail="No posted content to submit")
+
+    now = datetime.now()
+    batch_id = str(uuid.uuid4())
+
+    try:
+        with get_session() as session:
+            if body.csv_text:
+                csv_text = body.csv_text
+            else:
+                try:
+                    csv_text = build_posted_content_csv(body.posted_content, batch_id, now, session)
+                except ValueError as exc:
+                    raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+            batch = Batch(
+                doi_batch_id=batch_id,
+                deposited_by=body.deposited_by,
+                depositor_email=body.depositor_email,
+                doi_type="posted_content",
+                csv=csv_text,
+                approved=False,
+                submitted=True,
+                submitted_at=now,
+                successful=None,
+                created_by=body.deposited_by,
+                created_at=now,
+                updated_by=body.deposited_by,
+                updated_at=now,
+            )
+
+            xml, _, _ = convert_csv_or_400(csv_text, converter=convert_posted_content_csv_text_to_xml)
+            batch.xml = xml
+
+            repo = DBFunctions(session)
+            repo.insert(batch)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to save batch: {exc}") from exc
+
+    try:
+        send_registration_notification(batch.doi_batch_id, batch.csv, approve_path="posted-content", doi_type_label="Posted Content")
+    except Exception as exc:
+        print("Error sending registration notification email:", exc)
+
+    return {"batch_id": batch.doi_batch_id}
+
+
+@router.post("/posted-content/approve")
+def approve_posted_content(body: ApproveRequest):
+    with get_session() as session:
+        repo = DBFunctions(session)
+        batch = get_batch_or_404(repo, body.batch_id)
+        batch.approved = body.approved
+        return {"message": "Batch approval updated", "batch_id": body.batch_id}
+
+
+@router.get("/posted-content/approve/{batch_id}", response_class=HTMLResponse)
+def approve_posted_content_batch_email(batch_id: str, approver_email: str = None):
+    with get_session() as session:
+        repo = DBFunctions(session)
+        batch = get_batch_or_404(repo, batch_id)
+
+        batch.approved = True
+
+        try:
+            batch.successful, crossref_response = submit_batch_xml_to_crossref(batch.xml)
+        except Exception as exc:
+            batch.successful = False
+            raise HTTPException(status_code=502, detail=f"Crossref submission failed: {exc}") from exc
+
+        successful = batch.successful
+        depositor_email = batch.depositor_email
+
+        if successful:
+            try:
+                posted_content_rows = csv_text_to_posted_content(batch.csv or "")
+                for posted_content in posted_content_rows:
+                    posted_content.batch_id = uuid.UUID(batch.doi_batch_id)
+                    repo.insert(posted_content)
+                    record_minted_doi(repo, posted_content.doi, batch, approver_email)
+            except Exception as exc:
+                raise HTTPException(status_code=500, detail=f"Failed to record minted posted content: {exc}") from exc
+
+    if not successful:
+        try:
+            send_submission_failed_email(depositor_email, approver_email, batch_id, crossref_response)
+        except Exception as exc:
+            print("Error sending submission failed email:", exc)
+        return f"<p>Batch {batch_id} was submitted to Crossref but minting failed.</p><pre>{crossref_response}</pre>"
+
+    try:
+        send_success_email(depositor_email, batch_id)
+    except Exception as exc:
+        print("Error sending success email:", exc)
+
+    return f"<p>Batch {batch_id} approved and submitted to Crossref.</p>"
+
+
+@router.get("/posted-content/reject/{batch_id}", response_class=HTMLResponse)
+def reject_posted_content_batch_email(batch_id: str):
     with get_session() as session:
         repo = DBFunctions(session)
         batch = get_batch_or_404(repo, batch_id)

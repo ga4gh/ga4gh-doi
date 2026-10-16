@@ -1,6 +1,61 @@
-function formatCell(value) {
-  if (value === null || value === undefined) {
+// Human-readable "Label: value" renderers for the JSON-shaped columns
+// (contributors/institution/citations), keyed by the column's data-format.
+// Falls back to raw JSON for any object without a matching formatter.
+function formatContributors(contributors) {
+  if (!Array.isArray(contributors) || !contributors.length) return "";
+  const blocks = contributors.map((contributor, index) => {
+    const lines = [];
+    if (contributor.first_name) lines.push(`First Name: ${contributor.first_name}`);
+    if (contributor.last_name) lines.push(`Last Name: ${contributor.last_name}`);
+    const affiliations = (contributor.affiliations || [])
+      .map((affiliation) => affiliation.name || affiliation.ror)
+      .filter(Boolean);
+    if (affiliations.length) lines.push(`Affiliation: ${affiliations.join(", ")}`);
+    if (contributor.orcid) lines.push(`ORCID: ${contributor.orcid}`);
+    const heading = contributors.length > 1 ? `Contributor ${index + 1}\n` : "";
+    return heading + lines.join("\n");
+  });
+  return blocks.join("\n\n");
+}
+
+function formatInstitution(institution) {
+  if (!institution || typeof institution !== "object") return "";
+  const lines = [];
+  if (institution.name) lines.push(`Name: ${institution.name}`);
+  (institution.ids || []).forEach((id) => {
+    if (id.type && id.value) lines.push(`${id.type.toUpperCase()}: ${id.value}`);
+  });
+  if (institution.acronym) lines.push(`Acronym: ${institution.acronym}`);
+  if (institution.place) lines.push(`Place: ${institution.place}`);
+  if (institution.department) lines.push(`Department: ${institution.department}`);
+  return lines.join("\n");
+}
+
+function formatCitations(citations) {
+  if (!Array.isArray(citations) || !citations.length) return "";
+  const blocks = citations.map((citation, index) => {
+    const lines = [];
+    if (citation.doi) lines.push(`DOI: ${citation.doi}`);
+    if (citation.unstructured_citation) lines.push(`Citation: ${citation.unstructured_citation}`);
+    const heading = citations.length > 1 ? `Citation ${index + 1}\n` : "";
+    return heading + lines.join("\n");
+  });
+  return blocks.join("\n\n");
+}
+
+const CELL_FORMATTERS = {
+  contributors: formatContributors,
+  institution: formatInstitution,
+  citations: formatCitations,
+};
+
+function formatCell(value, format) {
+  if (value === null || value === undefined || value === "") {
     return "";
+  }
+  const formatter = format && CELL_FORMATTERS[format];
+  if (formatter) {
+    return formatter(value);
   }
   if (typeof value === "object") {
     return JSON.stringify(value);
@@ -27,6 +82,7 @@ document.querySelectorAll("table[data-api]").forEach((table) => {
   const headerCells = Array.from(table.querySelectorAll("thead th"));
   const columns = headerCells.map((th) => th.dataset.field);
   const columnLabels = headerCells.map((th) => th.textContent.trim());
+  const columnFormats = headerCells.map((th) => th.dataset.format || "");
   const searchInput = table.closest(".table-page")?.querySelector("[data-table-search]");
   const paginationEl = table.closest(".table-page")?.querySelector("[data-table-pagination]");
   const pageSizeEl = table.closest(".table-page")?.querySelector("[data-table-page-size]");
@@ -56,7 +112,7 @@ document.querySelectorAll("table[data-api]").forEach((table) => {
     const term = (searchInput?.value || "").trim().toLowerCase();
     if (!term) return allRows;
     return allRows.filter((row) =>
-      columns.some((field) => formatCell(row[field]).toLowerCase().includes(term))
+      columns.some((field, index) => formatCell(row[field], columnFormats[index]).toLowerCase().includes(term))
     );
   };
 
@@ -146,8 +202,11 @@ document.querySelectorAll("table[data-api]").forEach((table) => {
       const tr = document.createElement("tr");
       columns.forEach((field, index) => {
         const td = document.createElement("td");
-        td.textContent = formatCell(row[field]);
+        td.textContent = formatCell(row[field], columnFormats[index]);
         td.dataset.header = columnLabels[index];
+        if (columnFormats[index] && CELL_FORMATTERS[columnFormats[index]]) {
+          td.classList.add("cell-multiline");
+        }
         if (index >= CARD_VISIBLE_COUNT) {
           td.classList.add("card-field-extra");
         }

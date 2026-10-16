@@ -1,3 +1,11 @@
+# Terraform
+infra/.terraform/
+infra/*.tfstate
+infra/*.tfstate.*
+infra/terraform.tfvars
+infra/*.tfplan
+infra/.terraform.lock.hcl
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -153,7 +161,6 @@ dmypy.json
 cython_debug/
 
 #crossref auth details
-password.py
 csv/
 xml/
 

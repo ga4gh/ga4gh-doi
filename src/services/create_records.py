@@ -2,19 +2,19 @@ from datetime import datetime
 
 from src.models.batch import Batch
 from src.models.doi import Doi, Standard, Article, Conference, Grant, PostedContent, ReportWorkingPaper
-from src.services.csv_functions import format_authors, read_optional_cell
+from src.services.csv_functions import format_authors, read_json_cell, read_optional_cell
 
 
 class CreateRecords:
     def __init__(self) -> None:
         self.string = ""
 
-    def create_batch(df, timestamp):
+    def create_batch(df, timestamp, doi_type='standard'):
         return Batch(
             doi_batch_id=timestamp,
             deposited_by=str(df["<depositor_name>"].iloc[0]),
             depositor_email=str(df["<email_address>"].iloc[0]),
-            doi_type='standard',
+            doi_type=doi_type,
             xml=None,
             approved=False,
             submitted=False,
@@ -127,19 +127,20 @@ class CreateRecords:
             batch_id=None,
         )
 
-    def create_posted_content():
+    def create_posted_content(df, j, doi_value, posted_date, acceptance_date):
         return PostedContent(
-            doi="",
-            group_title="",
-            contributors=[],
-            title="",
-            posted_date=datetime.now(),
-            acceptance_date=datetime.now(),
-            institution="",
-            funders=[],
-            program="",
-            resource="",
-            citations=[],
+            doi=doi_value,
+            group_title=read_optional_cell(df, j, "<group_title>"),
+            contributors=read_json_cell(df, j, "<contributors>", []),
+            title=str(df["<title>"][j]),
+            original_language_title=read_optional_cell(df, j, "<original_language_title>"),
+            original_language_title_lang=read_optional_cell(df, j, "<original_language_title_lang>"),
+            posted_content_type=read_optional_cell(df, j, "<posted_content_type>") or "preprint",
+            posted_date=posted_date,
+            acceptance_date=acceptance_date,
+            institution=read_json_cell(df, j, "<institution>", {}),
+            resource=str(df["<resource>"][j]),
+            citations=read_json_cell(df, j, "<citations>", []),
             batch_id=None,
         )
 

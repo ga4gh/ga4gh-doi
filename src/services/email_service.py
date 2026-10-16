@@ -30,10 +30,10 @@ REGISTRATION_EMAIL_RECIPIENTS = [
     "chen.chen@ga4gh.org",
 ]
 
-REGISTRATION_EMAIL_TITLE = "New Standard DOI Registration - {batch_id}"
+REGISTRATION_EMAIL_TITLE = "New {doi_type_label} DOI Registration - {batch_id}"
 
 REGISTRATION_EMAIL_BODY = """
-A new standard DOI batch has been registered and is awaiting review.
+A new {doi_type_label} DOI batch has been registered and is awaiting review.
 
 Batch ID: {batch_id}
 
@@ -61,10 +61,12 @@ def _send_email(recipients, subject, html_body, attachment_filename=None, attach
         server.sendmail(FROM_EMAIL, recipients, message.as_string())
 
 
-def _approve_reject_buttons(batch_id: str, approver_email: str) -> str:
+def _approve_reject_buttons(batch_id: str, approver_email: str, approve_path: str) -> str:
     # approver_email is passed through the Approve link to identify the reviewer.
-    approve_url = f"{APP_BASE_URL}/standards/approve/{batch_id}?approver_email={quote(approver_email)}"
-    reject_url = f"{APP_BASE_URL}/standards/reject/{batch_id}"
+    # approve_path picks which doi_type's approve/reject routes the links point to
+    # (e.g. "standards" or "posted-content") - each doi_type parses its own CSV shape.
+    approve_url = f"{APP_BASE_URL}/{approve_path}/approve/{batch_id}?approver_email={quote(approver_email)}"
+    reject_url = f"{APP_BASE_URL}/{approve_path}/reject/{batch_id}"
     button_style = (
         "display:inline-block;padding:10px 20px;margin-right:12px;"
         "color:#fff;text-decoration:none;border-radius:4px;font-family:sans-serif;"
@@ -77,16 +79,18 @@ def _approve_reject_buttons(batch_id: str, approver_email: str) -> str:
     """
 
 
-def send_registration_notification(batch_id: str, csv_content: str) -> None:
+def send_registration_notification(
+    batch_id: str, csv_content: str, approve_path: str = "standards", doi_type_label: str = "Standard"
+) -> None:
     # Sends one email per recipient, each with its own Approve link carrying
     # that recipient's address as approver_email.
-    subject = REGISTRATION_EMAIL_TITLE.format(batch_id=batch_id)
-    body_text = REGISTRATION_EMAIL_BODY.format(batch_id=batch_id)
+    subject = REGISTRATION_EMAIL_TITLE.format(batch_id=batch_id, doi_type_label=doi_type_label)
+    body_text = REGISTRATION_EMAIL_BODY.format(batch_id=batch_id, doi_type_label=doi_type_label)
 
     for recipient in REGISTRATION_EMAIL_RECIPIENTS:
         html_body = (
             f"<pre style='font-family:sans-serif;white-space:pre-wrap;'>{body_text}</pre>"
-            f"{_approve_reject_buttons(batch_id, recipient)}"
+            f"{_approve_reject_buttons(batch_id, recipient, approve_path)}"
         )
         _send_email(
             recipients=[recipient],

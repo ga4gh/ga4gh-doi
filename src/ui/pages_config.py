@@ -14,6 +14,7 @@ NAV_TABS = [
 TABLE_PAGES = {
     "standards.html": {
         "heading": "Standards",
+        "description": "DOIs registered for published technical standards, along with their designator, publisher, and standards body.",
         "model_name": "Standard",
         "api_endpoint": "/standards",
         "columns": [
@@ -46,6 +47,7 @@ TABLE_PAGES = {
     },
     "conference.html": {
         "heading": "Conference",
+        "description": "DOIs registered for conference proceedings, including the event, publisher, and publication details.",
         "model_name": "Conference",
         "api_endpoint": "/conference",
         "columns": [
@@ -75,6 +77,7 @@ TABLE_PAGES = {
     },
     "articles.html": {
         "heading": "Articles",
+        "description": "DOIs registered for journal articles, including the journal, issue, and contributor information.",
         "model_name": "Article",
         "api_endpoint": "/articles",
         "columns": [
@@ -96,6 +99,7 @@ TABLE_PAGES = {
     },
     "grants.html": {
         "heading": "Grants",
+        "description": "DOIs registered for research grants, including funders, award amounts, and recipients.",
         "model_name": "Grant",
         "api_endpoint": "/grants",
         "columns": [
@@ -120,26 +124,28 @@ TABLE_PAGES = {
     },
     "posted-content.html": {
         "heading": "Posted Content",
+        "description": "DOIs registered for posted content such as preprints, including posting and acceptance dates.",
         "model_name": "PostedContent",
         "api_endpoint": "/posted-content",
         "columns": [
             {"field": "id", "label": "ID"},
             {"field": "doi", "label": "DOI"},
             {"field": "group_title", "label": "Group Title"},
-            {"field": "contributors", "label": "Contributors"},
+            {"field": "contributors", "label": "Contributors", "format": "contributors"},
             {"field": "title", "label": "Title"},
+            {"field": "original_language_title", "label": "Original Language Title"},
+            {"field": "posted_content_type", "label": "Type"},
             {"field": "posted_date", "label": "Posted Date"},
             {"field": "acceptance_date", "label": "Acceptance Date"},
-            {"field": "institution", "label": "Institution"},
-            {"field": "funders", "label": "Funders"},
-            {"field": "program", "label": "Program"},
+            {"field": "institution", "label": "Institution", "format": "institution"},
             {"field": "resource", "label": "Resource"},
-            {"field": "citations", "label": "Citations"},
+            {"field": "citations", "label": "Citations", "format": "citations"},
             {"field": "batch_id", "label": "Batch ID"},
         ],
     },
     "reports.html": {
         "heading": "Reports",
+        "description": "DOIs registered for reports and working papers, including edition, publisher, and report number.",
         "model_name": "ReportWorkingPaper",
         "api_endpoint": "/reports",
         "columns": [
