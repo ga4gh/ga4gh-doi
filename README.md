@@ -42,7 +42,6 @@ posted content, reports) and submit them to Crossref.
 
 4. **Set up the database schema**
 
-   Database changes are managed with [Liquibase](https://www.liquibase.com/).
    Update `liquibase/liquibase.properties` with your database URL/credentials,
    then from the `liquibase/` directory run:
    ```
@@ -55,9 +54,8 @@ posted content, reports) and submit them to Crossref.
 python -m src.main
 ```
 
-Or, equivalently:
-```
-uvicorn src.main:app --reload
-```
-
 The app will be available at [http://localhost:8000](http://localhost:8000).
+
+## AI Disclosure
+
+Artificial intelligence tools, including large language models (LLMs), were used in the development of this project to support clarifying technical concepts and generating code snippets. These tools served as an aid for idea refinement, debugging, and testing of the program. All AI-generated code was thoroughly reviewed, verified for correctness, and fully understood before being incorporated into this work. Responsibility for all final decisions, interpretations, and implementations remains solely with the contributors.
