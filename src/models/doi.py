@@ -259,31 +259,43 @@ class PostedContent(Base):
     id: Mapped[Optional[int]] = mapped_column(Integer, primary_key=True, autoincrement=True)
     doi: Mapped[str] = mapped_column(String(255), nullable=False)
     group_title: Mapped[Optional[str]] = mapped_column(Text)
-    contributors: Mapped[Optional[list]] = mapped_column(JSON)
+    contributors: Mapped[Optional[list]] = mapped_column(JSON)  # [{first_name, last_name, affiliations: [{ror, name, acronym, place}], orcid}]
     title: Mapped[Optional[str]] = mapped_column(Text)
+    original_language_title: Mapped[Optional[str]] = mapped_column(Text)
+    original_language_title_lang: Mapped[Optional[str]] = mapped_column(Text)
+    posted_content_type: Mapped[Optional[str]] = mapped_column(Text)
     posted_date: Mapped[Optional[datetime]] = mapped_column(DateTime)
     acceptance_date: Mapped[Optional[datetime]] = mapped_column(DateTime)
-    institution: Mapped[Optional[str]] = mapped_column(Text)
-    funders: Mapped[Optional[list]] = mapped_column(JSON)
-    program: Mapped[Optional[str]] = mapped_column(Text)
+    institution: Mapped[Optional[dict]] = mapped_column(JSON)  # {name, ids: [{type, value}], acronym, place, department}
+    funders: Mapped[Optional[list]] = mapped_column(JSON)  # unused for now, reserved for a future fundref pass
+    program: Mapped[Optional[str]] = mapped_column(Text)  # unused for now, reserved for a future AccessIndicators pass
     resource: Mapped[Optional[str]] = mapped_column(Text)
-    citations: Mapped[Optional[list]] = mapped_column(JSON)
+    citations: Mapped[Optional[list]] = mapped_column(JSON)  # [{key, doi, unstructured_citation}]
     batch_id: Mapped[Optional[uuid.UUID]] = mapped_column(UUID(as_uuid=True))
 
 
-class PostedContentRequest(BaseModel):
-    doi: str
-    group_title: str
-    contributors: List[dict]
+class PostedContentRowInput(BaseModel):
+    group_title: str = ""
     title: str
-    posted_date: datetime
-    acceptance_date: datetime
-    institution: str
-    funders: List[dict]
-    program: str
-    resource: str
-    citations: List[dict]
-    batch_id: Optional[uuid.UUID] = None
+    original_language_title: str = ""
+    original_language_title_lang: str = ""
+    posted_content_type: str = "preprint"
+    contributors: List[dict] = []
+    institution: dict = {}
+    posted_date: str
+    acceptance_date: str = ""
+    resource_url: str
+    citations: List[dict] = []
+    depositor_name: str = ""
+    registrant: str
+    email_address: str
+
+
+class PostedContentSubmitRequest(BaseModel):
+    posted_content: List[PostedContentRowInput] = []
+    csv_text: Optional[str] = None
+    deposited_by: str
+    depositor_email: str
 
 
 class ReportWorkingPaper(Base):

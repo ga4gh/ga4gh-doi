@@ -2,7 +2,7 @@ import io
 import os
 
 import requests
-from src.config.password import EMAIL, PASSWORD
+from src.config.config import EMAIL, PASSWORD
 
 def submitDoi(xml):
     """Submit a DOI batch XML to Crossref.
