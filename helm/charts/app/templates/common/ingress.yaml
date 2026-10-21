@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ga4gh-doi-service
+  annotations:
+    {{- if eq .Values.ga4gh.doiService.cloudEnvironment "local" }}
+    kubernetes.io/ingress.class: nginx
+    {{- end }}
+    {{- if eq .Values.ga4gh.doiService.cloudEnvironment "aws" }}
+      alb.ingress.kubernetes.io/ssl-redirect: '443'
+      alb.ingress.kubernetes.io/certificate-arn: {{ .Values.ga4gh.doiService.aws.certificateARN }}
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+      kubernetes.io/ingress.class: alb
+    {{- end }}
+spec:
+  {{- if eq .Values.ga4gh.doiService.cloudEnvironment "local" }}
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - {{ .Values.ga4gh.doiService.baseURL }}
+      secretName: doi-tls
+  {{- end }}
+  {{- if eq .Values.ga4gh.doiService.cloudEnvironment "aws" }}
+  ingressClassName: alb
+  {{- end }}
+  rules:
+    - host: {{ .Values.ga4gh.doiService.baseURL }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: doi-service
+                port:
+                  number: 8000
