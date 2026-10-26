@@ -1,0 +1,6 @@
+apiVersion: v2
+name: ga4gh-doi-service-helm
+description: Helm Chart for the GA4GH DOI Service
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
