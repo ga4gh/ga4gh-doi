@@ -1,6 +1,7 @@
 function armSampleField(field) {
   field.value = field.dataset.sample;
   field.classList.add("is-sample");
+  field.blur();
 
   field.addEventListener(
     "focus",
@@ -42,8 +43,6 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// Other DOI-type sections aren't wired up to a real submit handler yet, so
-// this is the fallback that keeps their forms from actually navigating away.
 document.querySelectorAll("form").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();

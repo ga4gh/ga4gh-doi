@@ -9,5 +9,8 @@ if (doiTypeSelect) {
         field.disabled = !isSelected;
       });
     });
+    document.querySelectorAll("[data-queue-for]").forEach((section) => {
+      section.hidden = section.dataset.queueFor !== doiTypeSelect.value;
+    });
   });
 }

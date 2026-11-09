@@ -1,0 +1,14 @@
+.venv
+__pycache__
+*.pyc
+.git
+.github
+infra
+csv
+xml
+migrations
+liquibase
+.env
+.env.*
+*.md
+test-csv-output.csv

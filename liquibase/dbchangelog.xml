@@ -214,4 +214,14 @@
             <column name="batch_id" type="UUID"/>
         </createTable>
     </changeSet>
+    <changeSet author="cchen" id="1780584785863-8">
+        <!-- institution moves from a plain name string to a structured object
+             (name, ids, acronym, place, department) to match Crossref's posted_content schema. -->
+        <sql>ALTER TABLE posted_content ALTER COLUMN institution TYPE JSONB USING institution::jsonb</sql>
+        <addColumn tableName="posted_content">
+            <column name="original_language_title" type="TEXT"/>
+            <column name="original_language_title_lang" type="TEXT"/>
+            <column name="posted_content_type" type="TEXT"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

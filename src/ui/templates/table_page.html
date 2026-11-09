@@ -4,6 +4,9 @@
 
 {% block content %}
 <h2>{{ heading }}</h2>
+{% if description %}
+<p class="table-page-description">{{ description }}</p>
+{% endif %}
 <!-- Columns match src/models/doi.py: {{ model_name }} -->
 <div class="table-page">
   <div class="table-controls-top">
@@ -15,7 +18,7 @@
       <thead>
         <tr>
           {% for column in columns %}
-          <th data-field="{{ column.field }}">{{ column.label }}</th>
+          <th data-field="{{ column.field }}" data-format="{{ column.format|default('') }}">{{ column.label }}</th>
           {% endfor %}
         </tr>
       </thead>

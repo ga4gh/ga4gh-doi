@@ -35,10 +35,14 @@ def get_batch_or_404(repo, batch_id):
     return batch
 
 
-def convert_csv_or_400(csv_text):
-    """Convert CSV text to XML, raising HTTPException(400) on any failure."""
+def convert_csv_or_400(csv_text, converter=convert_csv_text_to_xml):
+    """Convert CSV text to XML, raising HTTPException(400) on any failure.
+
+    converter: the doi_type-specific CSV-to-XML function to run, e.g.
+    convert_csv_text_to_xml (standards) or convert_posted_content_csv_text_to_xml.
+    """
     try:
-        result = convert_csv_text_to_xml(csv_text)
+        result = converter(csv_text)
     except Exception as exc:
         raise HTTPException(status_code=400, detail=f"Failed to process CSV file: {exc}") from exc
     if result == 0:
