@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doi-service
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: doi-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: doi-service
+    spec:
+      containers:
+        - image: 282236276875.dkr.ecr.us-east-2.amazonaws.com/doi-service:v0.1.0-1-g81e0753
+          name: doi-service
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: common-db-info
+                  key: host
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: common-db-info
+                  key: port
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: common-db-info
+                  key: name
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: doi-service-db-credentials
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: doi-service-db-credentials
+                  key: password
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: crossref-credentials
+                  key: password
+            - name: EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: crossref-credentials
+                  key: email
+            - name: FULL
+              value: jdbc:postgresql://$(DB_HOST):$(DB_PORT)/$(DB_NAME)
+            - name: SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: email-credentials
+                  key: username
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: email-credentials
+                  key: password
+      imagePullSecrets:
+        - name: ecr-registry-key

@@ -1,0 +1,15 @@
+replicaCount: 1
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
+ga4gh:
+  doiService:
+    baseURL: doi.ga4gh.local
+    cloudEnvironment: local
